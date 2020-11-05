@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Coffee(models.Model):
+class Bean(models.Model):
     country = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
