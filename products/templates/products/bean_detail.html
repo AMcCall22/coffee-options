@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center m-3">
+      <h2 class="display-3">{{ bean.country}}</h2>
+    </div>
+  </div>
+  <div class="row mx-5">
+    <div class="col-sm-12 d-flex justify-content-center bean_image">
+      <a href="{{ bean.image.url }}" target="_blank">
+        <img
+          class="card-img-top img-fluid rounded mx-auto d-block img-thumbnail"
+          src="{{ bean.image.url }}"
+          alt="{{ bean.country }}"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container ">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <p>{{ bean.description }}</p>
+      <small class="text-muted"
+        ><i class="fas fa-star mr-1"></i>{{ bean.strength }} / 5</small>
+      <p>£{{ bean.price }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
