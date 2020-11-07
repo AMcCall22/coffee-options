@@ -1,10 +1,5 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
-<div class="container header-container">
-  <div class="row">
-    <div class="col"></div>
-  </div>
-</div>
-{% endblock %} {% block content %}
+{% extends "base.html" %} {% load static %}
+{% block content %}
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center m-3">
@@ -22,9 +17,8 @@
         </a>
         <h5>{{ beans.country }}</h5>
         <p>{{ beans.description }}</p>
-        <small class="text-muted"
-          ><i class="fas fa-star mr-1"></i>{{ beans.strength }} / 5</small>
-        <p>£{{ beans.price }}</p>
+        <p class="text-muted">Strength: {{ beans.strength }}/5</p>
+        <p class="font-weight-bold lead">£{{ beans.price }}</p>
       </div>
     </div>
     {% endfor %} {% endblock %}
