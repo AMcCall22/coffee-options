@@ -34,29 +34,32 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="navbar-toggler-icon"></span> 
             </button>
-            <div id="main-nav">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="coffee-options" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Shop</a>
-				</li>
-				<li class="nav-item dropdown">
-					<div class="dropdown-menu border-0" aria-labelledby="coffee-options">
-						<a href="{% url 'beans' %}" class="dropdown-item">Coffee Beans</a>
-						<a href="{% url 'beans' %}" class="dropdown-item ">Coffee Equipment</a>
-					</div>
+            <!-- <div id="main-nav"> -->
+            <div class="container justify-content-center">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'beans' %}">Coffee Beans</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Coffee Shop Reviews</a>
-				</li>
+                    <a class="nav-link" href="{% url 'beans' %}">Coffee Equipment</a>
+				</li>   
+			</ul>
+            </div>
+            <div class="container justify-content-end">
+            <ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="#">Login</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Register</a>
 				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="{% url 'view_shopping_bag' %}"><i class="fas fa-shopping-cart"></i></a>
+                    <p>£{{ grand_total }}</p>
+				</li>
 			</ul>
             </div>
+          
 		</nav>
     </header>
     {% if messages %}

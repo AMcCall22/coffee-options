@@ -23,21 +23,28 @@
     <div class="col-sm-12 text-center">
       <p>{{ bean.description }}</p>
       <p class="text-muted">Strength: {{ bean.strength }}/5</p>
-      <p class="font-weight-bold lead">£{{ bean.price }}</p>
   </div>
 </div>
 <div class="container d-flex justify-content-center ">
 	<form class="form" action="{% url 'add_to_shopping_bag' bean.id %}" method="POST">
 		{% csrf_token %}
-		<div class="row">
-			<div class="col-6">
+		<div class="row w-50 justify-content-center">
+        {% with bean.sizes as s %}
+        {% if s %}
+			<div class="col-12">
+				<p><strong>Size:</strong></p>
+			<select class="form-control" name="bag_size" id="id_bean_size">
+                <option value="s">Small(£5.00)</option>
+                <option value="l">Large(£7.50)</option>
+            </select>
+            </div>
+        {% endif %}
+            <div class="row">
+			<div class="col-12">
 				<p><strong>Quantity:</strong></p>
-			</div>
-			<div class="col-6">
 				<div class="form-group">
 					<div class="input-group">
-						<input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ bean.id }}" id="id_qty_{{ bean.id }}">
-            </div>
+						<input class="form-control qty_input" type="number" name="quantity" value="0" min="0" max="8">					           
 					</div>
 				</div>
 			</div>
@@ -49,11 +56,10 @@
 			<div class="row">
 				<div class="col-12">
 					<a href="{% url 'beans' %}" class="btn btn-primary">Continue Shopping</a>
+					<input type="hidden" name="redirect_url" value="{{ request.path }}">
+			    {% endwith %}
 				</div>
-
-			</div>
-<input type="hidden" name="redirect_url" value="{{ request.path }}">
-	</form>
-</div>
-{% endblock %}
-</div>
+				</form>
+				</div>
+				{% endblock %}
+			

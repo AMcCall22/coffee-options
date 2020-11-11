@@ -9,15 +9,29 @@ def shopping_bag_contents(request):
     bean_count = 0
     shopping_bag = request.session.get('shopping_bag', {})
 
-    for item_id, quantity in shopping_bag.items():
-        bean = get_object_or_404(Bean, pk=item_id)
-        total += quantity * bean.price
-        bean_count += quantity
-        shopping_bag_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'bean': bean,
-        })
+    for item_id, item_data in shopping_bag.items():
+        if isinstance(item_data, int):
+            bean = get_object_or_404(Bean, pk=item_id)
+            total += item_data * bean.price
+            bean_count += item_data
+            shopping_bag_items.append({
+                'item_id': item_id,
+                'quantity': item_data,
+                'bean': bean,
+            })
+
+        else:
+            bean = get_object_or_404(Bean, pk=item_id)
+            for sizes, quantity in item_data['items_by_size'].items():
+                total += quantity * bean.price
+                bean_count += quantity
+                shopping_bag_items.append({
+                    'item_id': item_id,
+                    'quantity': item_data,
+                    'bean': bean,
+                    'size': sizes,
+                })
+
 
     grand_total = total
 
