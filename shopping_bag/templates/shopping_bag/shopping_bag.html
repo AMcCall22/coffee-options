@@ -19,7 +19,6 @@
             <tr>
               <th scope="col">Coffee</th>
               <th scope="col"></th>
-              <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Subtotal</th>
             </tr>
@@ -30,18 +29,14 @@
             <td>
               <p>{{ item.bean.country }}</p>
             </td>            
-
             <td  class="w-25">
               <img class="img-fluid" src="{{ item.bean.image.url }}" />
             </td>           
             <td>
-              <p>${{ item.bean.price }}</p>
-            </td>
-            <td>
               <p>{{ item.quantity }}</p>
             </td>
             <td>
-              <p>${{ item.bean.price}}</p> 
+              <p>${{ item.bean.price | calc_subtotal:item.quantity }}</p> 
             </td>
           </tr>
           {% endfor %}

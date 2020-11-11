@@ -27,7 +27,7 @@ def shopping_bag_contents(request):
                 bean_count += quantity
                 shopping_bag_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'bean': bean,
                     'size': sizes,
                 })
