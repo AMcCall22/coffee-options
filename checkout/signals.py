@@ -4,8 +4,9 @@ from django.dispatch import receiver
 from .models import OrderLineItem
 
 """
-Code borrowed from CI's Boutique Ado project, Admin, Signals & Forms Part 1. 
+Code borrowed from CI's Boutique Ado project, Admin, Signals & Forms Part 1.
 """
+
 
 @receiver(post_save, sender=OrderLineItem)
 def update_on_save(sender, instance, created, **kwargs):
@@ -14,8 +15,9 @@ def update_on_save(sender, instance, created, **kwargs):
     """
     instance.order.update_total()
 
+
 @receiver(post_delete, sender=OrderLineItem)
-def update_on_save(sender, instance, **kwargs):
+def update_on_delete(sender, instance, **kwargs):
     """
     Update order total on lineitem delete
     """
