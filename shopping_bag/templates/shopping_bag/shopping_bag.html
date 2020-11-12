@@ -1,59 +1,56 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} 
 {% load bag_tools %}
-
 {% block content %}
 <div class="container-fluid">
-  <div class="row">
-    <div class="col text-center m-3">
-      <h2 class="display-3">Shopping Bag</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      {% if shopping_bag_items %}
-      <div class="table-responsive rounded">
-        <table class="table table-sm table-borderless">
-          <thead class="text-black">
-            <tr>
-              <th scope="col">Coffee</th>
-              <th scope="col"></th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Subtotal</th>
-            </tr>
-          </thead>
-
-          {% for item in shopping_bag_items %}
-          <tr>
-            <td>
-              <p>{{ item.bean.country }}</p>
-            </td>            
-            <td  class="w-25">
-              <img class="img-fluid" src="{{ item.bean.image.url }}" />
-            </td>           
-            <td>
-              <p>{{ item.quantity }}</p>
-            </td>
-            <td>
-              <p>${{ item.bean.price | calc_subtotal:item.quantity }}</p> 
-            </td>
-          </tr>
-          {% endfor %}
-		<tr>
-			<p class="float-right"><strong> Grand Total: {{ grand_total }}</strong></p>
-		</tr>
-        </table>
-        {% else %}
-        <p>Your shopping bag is empty</p>
-        <a
-          href=""
-          class="btn btn-lg">
-          <span>Go back</span>
-        </a>
-        {% endif %}
+   <div class="row">
+      <div class="col text-center m-3">
+         <h2 class="display-3">Shopping Bag</h2>
       </div>
-    </div>
-  </div>
+   </div>
+   <div class="row">
+      <div class="col">
+         {% if shopping_bag_items %}
+         <div class="table-responsive rounded">
+            <table class="table table-sm table-borderless">
+               <thead class="text-black">
+                  <tr>
+                     <th scope="col">Coffee</th>
+                     <th scope="col"></th>
+                     <th scope="col">Price</th>
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Subtotal</th>
+                  </tr>
+               </thead>
+               {% for item in shopping_bag_items %}
+               <tr>
+                  <td>
+                     <p>{{ item.bean.country }}</p>
+                  </td>
+                  <td  class="w-25">
+                     <img class="img-fluid" src="{{ item.bean.image.url }}" />
+                  </td>
+                  <td>
+                     <p>${{ item.bean.price }}</p>
+                  </td>
+                  <td>
+                     <p>{{ item.quantity }}</p>
+                  </td>
+                  <td>
+                     <p>${{ item.bean.price | calc_subtotal:item.quantity }}</p>
+                  </td>
+               </tr>
+               {% endfor %}
+            </table>
+            {% else %}
+            <p>Your shopping bag is empty</p>
+            <a
+               href=""
+               class="btn btn-lg">
+            <span>Go back</span>
+            </a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}
