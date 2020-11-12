@@ -34,8 +34,8 @@
 			<div class="col-12">
 				<p><strong>Size:</strong></p>
 			<select class="form-control" name="bag_size" id="id_bean_size">
-                <option value="s">Small(£5.00)</option>
-                <option value="l">Large(£7.50)</option>
+                <option value="s" id="small_bag">Small</option>
+                <option value="l" id="large_bag">Large</option>
             </select>
             </div>
         {% endif %}
@@ -55,7 +55,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					<a href="{% url 'beans' %}" class="btn btn-primary">Continue Shopping</a>
+					<a href="{% url 'beans' %}" class="btn btn-primary">Go back for more beans!</a>
 					<input type="hidden" name="redirect_url" value="{{ request.path }}">
 			    {% endwith %}
 				</div>

@@ -32,7 +32,6 @@ def shopping_bag_contents(request):
                     'size': sizes,
                 })
 
-
     grand_total = total
 
     context = {
