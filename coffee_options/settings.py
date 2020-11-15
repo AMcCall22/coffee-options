@@ -33,13 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -49,6 +42,12 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms'
 ]
 
@@ -177,3 +176,6 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # Login
 LOGIN_REDIRECT_URL = '/'
+
+# Email Testing
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
