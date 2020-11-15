@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'shopping_bag',
     'checkout',
     'profiles',
-
+    'django.contrib.admin',
     'crispy_forms'
 ]
 
