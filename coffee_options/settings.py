@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'i+ab#+pyz0-l-9w=7ykh#re-uocd)(k$vg%w%+$e^i3v@*k!m4'
+SECRET_KEY = '(l1!n9$92sgqqp2p#fl6g(^e)-exlobs$6k6g5xok+l(n^b6=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -113,7 +113,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
-WSGI_APPLICATION = 'coffee_choices.wsgi.application'
+WSGI_APPLICATION = 'coffee_options.wsgi.application'
 
 
 # Database
