@@ -119,9 +119,17 @@ WSGI_APPLICATION = 'coffee_options.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://csgdafrcatgktm:40cbcc00f97a954969a7066ccd682fb668cc2f45e88be2d4cd6c911e6a99d662@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/dav52fp4uc7j')
-}
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
