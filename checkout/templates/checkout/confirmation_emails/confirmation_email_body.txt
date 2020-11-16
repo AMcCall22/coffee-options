@@ -1,0 +1,12 @@
+Hello!
+
+This is an email to confirm your order from All Things Coffee, ordered on {{ order.date }}.
+
+Order Number: {{ order.order_number }}
+Grand Total: ${{ order.grand_total }}
+
+Your order will be delivered to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }} with 3-5 business days of the order date.
+
+Thank you for your order.
+
+The team at All Things Coffee 

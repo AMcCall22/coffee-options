@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Bean
 
-# Create your views here.
 
+# Create your views here.
 
 def all_beans(request):
     """ A view to show all coffee beans """
