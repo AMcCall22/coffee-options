@@ -15,6 +15,7 @@ from pathlib import Path
 import dj_database_url
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -120,7 +121,6 @@ WSGI_APPLICATION = 'coffee_options.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -132,6 +132,7 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -215,3 +216,4 @@ LOGIN_REDIRECT_URL = '/'
 
 # Email Testing
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
