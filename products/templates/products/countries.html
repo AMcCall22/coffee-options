@@ -3,19 +3,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center m-3">
-      <h2 class="display-3">Coffee Beans</h2>
+      <h2 class="display-3">Countries of Origin</h2>
     </div>
   </div>
-<!-- Beans products displayed in cards -->
+<!-- countries products displayed in cards -->
 <div class="container">
   <div class="row ">
-    {% for beans in beans %}
+    {% for countries in countries %}
     <div class="col-sm-4 d-flex justify-content-center px-0">
       <div class="w-50 card border-dark mb-3 text-center">
-        <a href="{% url 'bean_detail' beans.id %}" target="_blank">
-          <img class="card-img-top img-fluid" src="{{ beans.image.url }}" alt="{{ beans.country_name }}"/>
+        <a href="{% url 'bean_detail' countries.id %}" target="_blank">
+          <img class="card-img-top img-fluid" src="{{ countries.image.url }}" alt="{{ countries.country_name }}"/>
         </a>
-        <h5>{{ beans.friendly_name }}</h5>
+        <h5>{{ countries.friendly_name }}</h5>
             </div>
     </div>
     {% endfor %} {% endblock %}

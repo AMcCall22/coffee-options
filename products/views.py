@@ -4,22 +4,21 @@ from .models import Bean, Country
 
 # Create your views here.
 
-def all_beans(request):
-    """ A view to show all coffee beans,  """
+def all_countries(request):
+    """ A view to show all countries  """
 
-    beans = Country.objects.all()
-    
+    countries = Country.objects.all()
     context = {
-        'beans': beans,
+        'countries': countries,
     }
 
-    return render(request, 'products/beans.html', context)
+    return render(request, 'products/countries.html', context)
 
 
 def bean_detail(request, beans_id):
     """ A view to show individual coffee bean detail """
 
-    bean = get_object_or_404(Bean, pk=beans_id)
+    bean = Bean.objects.filter(country=beans_id)
 
     context = {
         'bean': bean,
