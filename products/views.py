@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Bean
+from .models import Bean, Country
 
 
 # Create your views here.
 
 def all_beans(request):
-    """ A view to show all coffee beans """
+    """ A view to show all coffee beans,  """
 
-    beans = Bean.objects.all()
-
+    beans = Country.objects.all()
+    
     context = {
         'beans': beans,
     }
