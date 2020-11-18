@@ -13,9 +13,9 @@
     <div class="col-sm-4 d-flex justify-content-center px-0">
       <div class="w-50 card border-dark mb-3 text-center">
         <a href="{% url 'bean_detail' beans.id %}" target="_blank">
-          <img class="card-img-top img-fluid" src="{{ beans.image.url }}" alt="{{ beans.country }}"/>
+          <img class="card-img-top img-fluid" src="{{ beans.image.url }}" alt="{{ beans.country_name }}"/>
         </a>
-        <h5>{{ beans.country }}</h5>
+        <h5>{{ beans.country_name }}</h5>
         <p>{{ beans.description }}</p>
         <p class="text-muted">Strength: {{ beans.strength }}/5</p>
         </div>
