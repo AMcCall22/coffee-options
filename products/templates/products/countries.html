@@ -12,10 +12,11 @@
     {% for countries in countries %}
     <div class="col-sm-4 d-flex justify-content-center px-0">
       <div class="w-50 card border-dark mb-3 text-center">
+<h5>{{ countries.friendly_name }}</h5>
         <a href="{% url 'bean_detail' countries.id %}" target="_blank">
           <img class="card-img-top img-fluid" src="{{ countries.image.url }}" alt="{{ countries.country_name }}"/>
         </a>
-        <h5>{{ countries.friendly_name }}</h5>
+        <p>{{ countries.description }}</p>
             </div>
     </div>
     {% endfor %} {% endblock %}

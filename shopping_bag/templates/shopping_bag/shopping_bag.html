@@ -24,7 +24,7 @@
             {% for item in shopping_bag_items %}
             <tr>
                <td>
-                  <p>{{ item.bean.country }}</p>
+                  <!-- <p>{{ item.bean.country }}</p> -->
                </td>
                <td  class="w-25">
                   <img class="img-fluid" src="{{ item.bean.image.url }}" />
@@ -51,7 +51,7 @@
          {% else %}
          <p>Your shopping bag is empty</p>
          <a
-            href="{% url 'beans' %}"
+            href="{% url 'countries' %}"
             class="btn btn-lg">
          <span>Go back</span>
          </a>
