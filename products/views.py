@@ -16,7 +16,8 @@ def all_countries(request):
 
 
 def bean_detail(request, beans_id):
-    """ A view to show individual coffee bean detail """
+    """ A view to show individual coffee beans,
+        by country and with size options """
 
     bean = Bean.objects.filter(country=beans_id)
 
