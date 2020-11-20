@@ -216,4 +216,3 @@ LOGIN_REDIRECT_URL = '/'
 
 # Email Testing
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-

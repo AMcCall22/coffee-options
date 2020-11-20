@@ -10,10 +10,6 @@ def add_to_shopping_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    # print(redirect_url)
-    print("bean.id")
-    print(item_id)
-    # print(quantity)
     shopping_bag = request.session.get('shopping_bag', {})
     if item_id in list(shopping_bag.keys()):
         shopping_bag[item_id] += quantity

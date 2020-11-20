@@ -1,8 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Bean, Country
 
-
-# Create your views here.
 
 def all_countries(request):
     """ A view to show all countries  """
