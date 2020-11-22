@@ -1,5 +1,13 @@
+html, body {
+  height: 100%;
+}
+
 body{
     padding-top: 65px;
+    height: 100%;
+      display: flex;
+  flex-direction: column
+
 }
 
 .nav-color{
@@ -25,9 +33,11 @@ body{
     margin: 0;
 }
 
-.page-footer{
+.footer{
     background-color:#52719f;
+    flex-shrink: 0;
 }
 
-
-
+.content {
+  flex: 1 0 auto;
+}
