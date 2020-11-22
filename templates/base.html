@@ -37,7 +37,7 @@
 
     <body>
    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar-expand-lg navbar-light nav-color fixed-top">
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
          </button>
@@ -48,7 +48,7 @@
                <ul class="navbar-nav">
                   <li class = "nav-item dropdown">
                      <a class="nav-link" href="#" id="regions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
-                      <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                      <div class="dropdown-menu border-0">
                          <a href="{% url 'countries' %}?category=all" class="dropdown-item">All</a>
                          <a href="{% url 'countries' %}?category=south_america" class="dropdown-item">South America</a>
                          <a href="{% url 'countries' %}?category=asia" class="dropdown-item">Asia</a>
@@ -58,13 +58,16 @@
                      </li>
                </ul>
             </div>
-            <div class="container d-flex justify-content-center">
+            <div class="container">
                <ul class="navbar-nav">
                   {% if user.is_authenticated %}
-                  <li>User: {{ user.get_username }}
-                     <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
-                     <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                  </li>
+                  <li class = "nav-item dropdown my-auto">
+                     <a class="nav-link" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                    <div class="dropdown-menu border-0">
+                        <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
                   {% else %}
                   <li>
                      <a class="nav-link" href="{% url 'account_login' %}">Login</a>
@@ -74,17 +77,19 @@
                   </li>
                   {% endif %}
                   <li>
-                     <a class="nav-link"
-                        href="{% url 'view_shopping_bag' %}">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>£{{ grand_total }}</p>
+                     <a class="nav-link my-auto" href="{% url 'view_shopping_bag' %}">
+                        <span class="my-auto">Shopping Bag <i class="fas fa-shopping-cart"></i></span>
+                        <p class="my-auto">Current Total £{{ grand_total }}</p>
                      </a>
-                  </li>
+                  </li>                    
                </ul>
             </div>
          </div>
       </nav>
    </header>
+
+    {% block page_header %}
+    {% endblock %}
 
    {% block content %}
    {% endblock %}
@@ -114,7 +119,7 @@
                 </ul>
          </div>
       </div>
-   
+   <hr>
    <div class="container text-center">
       © 2020 For Educational Purposes
    </div>

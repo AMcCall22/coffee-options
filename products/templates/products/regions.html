@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %}
-{% block content %}
-<div class="container">
+{% block page_header %}
+<div class="container>
   <div class="row">
     <div class="col text-center m-3">
       <h2 class="display-3">Coffee Choices</h2>
@@ -9,6 +9,8 @@
 You might already have a favourite coffee and fancy trying a different bean from the same region,
 same intensity from a different region, or something new altogether! </p>
   </div>
+{% endblock %}
+{% block content %}
 <!-- regions products displayed in cards -->
 <div class="container">
 	<div class="row ">

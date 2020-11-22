@@ -1,12 +1,14 @@
 {% extends "base.html" %} {% load static %}
-{% block content %}
+{% block page_header %}
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center m-3">
       <h2 class="display-3">Countries of Origin</h2>
     </div>
   </div>
+{% endblock %}
 <!-- countries products displayed in cards -->
+{% block content %}
 <div class="container">
   <div class="row ">
     {% for countries in countries %}

@@ -1,16 +1,22 @@
+body{
+    padding-top: 65px;
+}
+
+.nav-color{
+    background-color:#52719f;
+}
 
 .map-container {
-  width: 23rem;
-  height: 23rem;
-border: black solid 0.05rem;
-
+    width: 23rem;
+    height: 23rem;
+    border: black solid 0.05rem;
 }
 
 .map {
-background-size: contain;
-width: 14rem;
-height: 14rem;
-border-radius: 20rem;
+    background-size: contain;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 20rem;
 }
 
 .no-bullets {

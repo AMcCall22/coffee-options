@@ -1,11 +1,13 @@
 {% extends "base.html" %} {% load static %}
-{% block content %}
-<div class="container-fluid">
+{% block page_header %}
+<div class="container pt-4">
 <div class="row">
    <div class="col text-center m-3">
       <h2 class="display-3">Coffee Bag Options</h2>
    </div>
 </div>
+{% endblock %}
+{% block content %}
 <div class="container w-75">
    {% for bean in bean %}
    <div class="row border border-dark rounded my-3 p-4 h-100  ">
