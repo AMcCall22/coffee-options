@@ -1,5 +1,30 @@
 from django.shortcuts import render
-from .models import Bean, Country
+from .models import Bean, Country, Region
+
+
+def all_regions(request):
+    """ A view to show all coffee regions available  """
+
+    regions = Region.objects.all()
+
+    context = {
+        'regions': regions,
+    }
+
+    return render(request, 'products/regions.html', context)
+
+
+def countries_by_region(request, region_id):
+    """ A view to show all regions and the countries within each """
+
+    countries = Country.objects.filter(region=region_id)
+
+    context = {
+       'countries': countries,
+    }
+    print(countries)
+
+    return render(request, 'products/countries.html', context)
 
 
 def all_countries(request):
