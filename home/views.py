@@ -18,3 +18,16 @@ def all_regions(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def countries_by_region(request, region_id):
+    """ A view to show all regions and the countries within each """
+
+    region = Region.objects.filter(region=region_id)
+
+    context = {
+       'region': region,
+    }
+    print(region)
+
+    return render(request, 'products/countries.html', context)

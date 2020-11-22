@@ -31,7 +31,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Coffee Options</title>
+    <title>Coffee Choices</title>
     
     </head>
 
@@ -42,13 +42,20 @@
          <span class="navbar-toggler-icon"></span>
          </button>
             <div class="collapse navbar-collapse" id="main-nav">
-                <a class="container navbar-brand d-none d-sm-block" href="{% url 'regions' %}">All Things Coffee
+                <a class="container navbar-brand d-none d-sm-block" href="{% url 'regions' %}">Coffee Choices
                     <i class="fas fa-mug-hot"></i></a>
                 <div class="container d-flex justify-content-center">
                     <ul class="navbar-nav">
-                        <li>
-                            <a class="nav-link" href="{% url 'countries' %}">Buy Coffee Beans</a>
-                        </li>
+                        <!-- <li class = "nav-item dropdown">
+                            <a class="nav-link" href="#" id="regions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
+                            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                                <a href="{% url 'countries' %}?category=all" class="dropdown-item">All</a>
+                                <a href="{% url 'countries' %}?category=south_america" class="dropdown-item">South America</a>
+                                <a href="{% url 'countries' %}?category=asia" class="dropdown-item">Asia</a>
+                                <a href="{% url 'countries' %}?category=africa" class="dropdown-item">Africa</a>
+                                <a href="{% url 'countries' %}?category=north_america" class="dropdown-item">North America</a>
+                            </div>                      
+                        </li> -->
                     </ul>
                 </div>
                 <div class="container d-flex justify-content-center">

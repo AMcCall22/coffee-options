@@ -1,3 +1,17 @@
-.bean_image{
-    width: 30rem;
+
+.map-container {
+  width: 23rem;
+  height: 23rem;
+border: black solid 0.05rem;
+
 }
+
+.map {
+background-size: contain;
+width: 14rem;
+height: 14rem;
+border-radius: 20rem;
+}
+
+
+

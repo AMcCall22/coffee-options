@@ -16,7 +16,7 @@ class Region(models.Model):
 
 
 class Country(models.Model):
-
+    region = models.ForeignKey('Region', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     image = models.ImageField(default=False)
