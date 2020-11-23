@@ -1,8 +1,27 @@
-<h1>Blog</h1>
-
-<ul>
-{% for post in object_list %}
-    <li><a href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a> - {{ post.author }}<br/>
-    {{ post.body }}</li>
-{% endfor %}
-</ul>
+{% extends "base.html" %} {% load static %}
+{% block page_header %}
+<div class="container-fluid content">
+  <div class="row">
+    <div class="col text-center m-3">
+      <h2 class="display-4">Coffee Blog</h2>
+    </div>
+  </div>
+{% endblock %}
+<!-- blog posts displayed in cards -->
+{% block content %}
+<div class="container">
+	<div class="row ">
+		{% for post in object_list %}
+		<div class="col-sm-12 d-flex justify-content-center px-0">
+			<div class="w-50 card border-dark mb-3 text-center">
+				<h5>{{ post.title }}</h5>
+				<a href="{% url 'blog-detail' post.pk %}"> - {{ post.author }}<br/>
+                {{ post.body }}
+        </a>
+			</div>
+		</div>
+    {% endfor %} 
+  </div>
+</div>
+</div>
+{% endblock %}
