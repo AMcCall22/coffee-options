@@ -6,7 +6,8 @@ body{
     padding-top: 65px;
     display: flex;
     flex-direction: column;
-    background: url('/media/background/beans5.jpg') no-repeat center center fixed;
+    /* background: url('/media/background/beans5.jpg') no-repeat center center fixed; */
+    background-color: lightgrey;
     background-size: cover;
     height: 100%;
 
@@ -20,8 +21,8 @@ body{
 
 .map {
     background-size: cover;
-    width: 14rem;
-    height: 14rem;
+    /* width: 14rem;
+    height: 14rem; */
 }
 
 .hero-text {
@@ -46,8 +47,9 @@ body{
 }
 
 .footer{
-    background-color:#52719f;
+    background-color:	#194e77;
     flex-shrink: 0;
+    color: white;
 }
 
 .content {
