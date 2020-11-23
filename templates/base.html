@@ -47,13 +47,13 @@
             <div class="container d-flex justify-content-center">
                <ul class="navbar-nav">
                   <li class = "nav-item dropdown">
-                     <a class="nav-link" href="#" id="regions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
+                     <a class="nav-link" href="{% url 'countries' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
                       <div class="dropdown-menu border-0">
                          <a href="{% url 'countries' %}?category=all" class="dropdown-item">All</a>
-                         <a href="{% url 'countries' %}?category=south_america" class="dropdown-item">South America</a>
-                         <a href="{% url 'countries' %}?category=asia" class="dropdown-item">Asia</a>
-                         <a href="{% url 'countries' %}?category=africa" class="dropdown-item">Africa</a>
-                         <a href="{% url 'countries' %}?category=north_america" class="dropdown-item">North America</a>
+                         <a href="{% url 'countries'%}?name=south_america" class="dropdown-item">South America</a>
+                         <a href="{% url 'countries'%}?name=asia" class="dropdown-item">Asia</a>
+                         <a href="{% url 'countries'%}?name=africa" class="dropdown-item">Africa</a>
+                         <a href="{% url 'countries'%}?name=north_america" class="dropdown-item">North America</a>
                      </div>                      
                      </li>
                </ul>

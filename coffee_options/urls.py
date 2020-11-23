@@ -23,8 +23,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('index/', include('home.urls')),
     path('', include('products.urls')),
-    # path('countries/', include('products.urls')),
-    # path('bean_detail/', include('products.urls')),
     path('shopping_bag/', include('shopping_bag.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
