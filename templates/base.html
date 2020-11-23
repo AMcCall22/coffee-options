@@ -36,60 +36,60 @@
     </head>
 
     <body>
-   <header>
+    <header>
       <nav class="navbar-expand-lg nav-color fixed-top">
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse" id="main-nav">
-            <a class="container navbar-brand d-none d-sm-block text-white" href="#">Coffee Choices
-            <i class="fas fa-mug-hot"></i></a>
-            <div class="container d-flex justify-content-center">
-               <ul class="navbar-nav">
-                  <li class = "nav-item dropdown">
-                     <a class="nav-link text-white" href="{% url 'countries' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
-                      <div class="dropdown-menu border-0">
-                         <a href="{% url 'countries' %}?category=all" class="dropdown-item">All</a>
-                         <a href="{% url 'countries'%}?name=south_america" class="dropdown-item">South America</a>
-                         <a href="{% url 'countries'%}?name=asia" class="dropdown-item">Asia</a>
-                         <a href="{% url 'countries'%}?name=africa" class="dropdown-item">Africa</a>
-                         <a href="{% url 'countries'%}?name=north_america" class="dropdown-item">North America</a>
-                     </div>                      
-                     </li>
-               </ul>
-            </div>
-            <div class="container">
-               <ul class="navbar-nav">
-                  {% if user.is_authenticated %}
-                  <li class = "nav-item dropdown my-auto">
-                     <a class="nav-link text-white text-center" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
-                    <div class="dropdown-menu border-0">
-                        <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    </div>
-                </li>
-                  {% else %}
-                  <li>
-                     <a class="nav-link text-white" href="{% url 'account_login' %}">Login</a>
-                  </li>
-                  <li>
-                     <a class="nav-link text-white" href="{% url 'account_signup'%}">Register</a>
-                  </li>
-               </ul>
-            </div>
-                  {% endif %}
-         <div class="container d-flex justify-content-center">
-            <ul class="float-sm-right p-0">
-                <li class="no-bullets">
-                    <a class="nav-link text-white my-auto" href="{% url 'view_shopping_bag' %}">
-                    <span class="my-auto">Shopping Bag <i class="fas fa-shopping-cart"></i></span>
-                    <p class="my-auto">Current Total £{{ grand_total }}</p>
-                    </a>
-                </li>                    
-            </ul>
-        </div>
-    </div>
-      </nav>
+		<div class="collapse navbar-collapse" id="main-nav">
+			<a class="container navbar-brand d-none d-sm-block text-white" href="{% url 'all_regions' %}">Coffee Choices
+				<i class="fas fa-mug-hot"></i></a>
+			<div class="container d-flex justify-content-center">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link text-white" href="{% url 'countries' %}" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">Buy Coffee Beans</a>
+						<div class="dropdown-menu border-0">
+							<a href="{% url 'countries' %}" class="dropdown-item">All</a>
+							<a href="{% url 'countries' %}" class="dropdown-item">South America</a>
+							<a href="{% url 'countries' %}" class="dropdown-item">Asia</a>
+							<a href="{% url 'countries' %}" class="dropdown-item">Africa</a>
+							<a href="{% url 'countries' %}" class="dropdown-item">North America</a>
+						</div>
+					</li>
+					<li>
+						<a class="nav-link text-white" href="{% url 'blog' %}">Blog</a></li>
+					{% if user.is_authenticated %}
+					<li class="nav-item dropdown my-auto">
+						<a class="nav-link text-white text-center" href="#" id="profile" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">My Profile</a>
+						<div class="dropdown-menu border-0">
+							<a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+							<a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+						</div>
+					</li>
+					{% else %}
+					<li>
+						<a class="nav-link text-white" href="{% url 'account_login' %}">Login</a>
+					</li>
+					<li>
+						<a class="nav-link text-white" href="{% url 'account_signup'%}">Register</a>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+			<div class="container d-flex justify-content-center">
+				<ul class="float-sm-right p-0 m-0">
+					<li class="no-bullets">
+						<a class="nav-link text-white my-auto" href="{% url 'view_shopping_bag' %}">
+							<span class="my-auto"><i class="fas fa-shopping-cart"></i> Shopping Bag<i class="fas fa-shopping-cart"></i></span>
+							<p class="my-auto text-center">Current Total: £{{ grand_total }}</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</nav>
    </header>
 
     {% block page_header %}
