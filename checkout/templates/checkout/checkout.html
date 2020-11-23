@@ -9,18 +9,18 @@
 {% block content %}
     <div class="row text-center">
             <div class="col-12">
-                <h2 class="logo-font mb-4">Checkout</h2>
+                <h2 class="display-4">Checkout</h2>
                     </div>
         </div>
     <div class="container d-flex justify-content-center">
             <div class="col-12 col-lg-6">
                     <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="px-3 mb-5">
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="px-3 mb-5">
                         <legend class="fieldset-label text-black text-center px-2 w-auto">Delivery Details</legend>
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
@@ -35,26 +35,27 @@
                         <div class="mb-3" id="card-element"></div>
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
-        
                     <div class="submit-button text-center mt-5 mb-2">                    
-						<a href="{% url 'view_shopping_bag' %}" class="btn btn-black rounded-0">
+						<a href="{% url 'view_shopping_bag' %}" class=class="btn border-dark rounded">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
 							</span>
 							<span class="font-weight-bold"> Go back to adjust order</span>
 						</a>
-						<button id="submit-button" class="btn btn-black rounded-0">
+						<button id="submit-button" class="btn border-dark rounded">
 							<span class="font-weight-bold">Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>
 						</button>
+
 						<p class="small my-0">
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
 							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
 						</p>
+
 					</div>
                 </form>
             </div>

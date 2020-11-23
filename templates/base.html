@@ -51,10 +51,10 @@
 							aria-expanded="false">Buy Coffee Beans</a>
 						<div class="dropdown-menu border-0">
 							<a href="{% url 'countries' %}" class="dropdown-item">All</a>
-							<a href="{% url 'countries' %}" class="dropdown-item">South America</a>
-							<a href="{% url 'countries' %}" class="dropdown-item">Asia</a>
-							<a href="{% url 'countries' %}" class="dropdown-item">Africa</a>
-							<a href="{% url 'countries' %}" class="dropdown-item">North America</a>
+							<a href="{% url 'countries_by_region' 1 %}" class="dropdown-item">South America</a>
+							<a href="{% url 'countries_by_region' 2 %}" class="dropdown-item">Asia</a>
+							<a href="{% url 'countries_by_region' 3 %}" class="dropdown-item">Africa</a>
+							<a href="{% url 'countries_by_region' 4 %}" class="dropdown-item">North America</a>
 						</div>
 					</li>
 					<li>
