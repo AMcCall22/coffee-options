@@ -62,7 +62,7 @@
                <ul class="navbar-nav">
                   {% if user.is_authenticated %}
                   <li class = "nav-item dropdown my-auto">
-                     <a class="nav-link text-white text-center" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile Options</a>
+                     <a class="nav-link text-white text-center" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
                     <div class="dropdown-menu border-0">
                         <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
