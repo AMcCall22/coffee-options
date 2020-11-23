@@ -37,17 +37,17 @@
 
     <body>
    <header>
-      <nav class="navbar-expand-lg navbar-light nav-color fixed-top">
+      <nav class="navbar-expand-lg nav-color fixed-top">
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse" id="main-nav">
-            <a class="container navbar-brand d-none d-sm-block" href="#">Coffee Choices
+         <div class="collapse navbar-collapse">
+            <a class="container navbar-brand d-none d-sm-block text-white" href="#">Coffee Choices
             <i class="fas fa-mug-hot"></i></a>
             <div class="container d-flex justify-content-center">
                <ul class="navbar-nav">
                   <li class = "nav-item dropdown">
-                     <a class="nav-link" href="{% url 'countries' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
+                     <a class="nav-link text-white" href="{% url 'countries' %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buy Coffee Beans</a>
                       <div class="dropdown-menu border-0">
                          <a href="{% url 'countries' %}?category=all" class="dropdown-item">All</a>
                          <a href="{% url 'countries'%}?name=south_america" class="dropdown-item">South America</a>
@@ -62,7 +62,7 @@
                <ul class="navbar-nav">
                   {% if user.is_authenticated %}
                   <li class = "nav-item dropdown my-auto">
-                     <a class="nav-link" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                     <a class="nav-link text-white" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
                     <div class="dropdown-menu border-0">
                         <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -70,14 +70,14 @@
                 </li>
                   {% else %}
                   <li>
-                     <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                     <a class="nav-link text-white" href="{% url 'account_login' %}">Login</a>
                   </li>
                   <li>
-                     <a class="nav-link" href="{% url 'account_signup'%}">Register</a>
+                     <a class="nav-link text-white" href="{% url 'account_signup'%}">Register</a>
                   </li>
                   {% endif %}
                   <li>
-                     <a class="nav-link my-auto" href="{% url 'view_shopping_bag' %}">
+                     <a class="nav-link text-white my-auto" href="{% url 'view_shopping_bag' %}">
                         <span class="my-auto">Shopping Bag <i class="fas fa-shopping-cart"></i></span>
                         <p class="my-auto">Current Total £{{ grand_total }}</p>
                      </a>

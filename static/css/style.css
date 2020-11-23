@@ -6,7 +6,7 @@ body{
     padding-top: 65px;
     display: flex;
     flex-direction: column;
-    background: url('/media/background/beans.jpg') no-repeat center center fixed;
+    background: url('/media/background/beans5.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 
@@ -14,19 +14,19 @@ body{
 
 /*............................................................................. home page(regions) */
 .map-container {
-    width: 23rem;
-    height: 23rem;
-    border: black solid 0.05rem;
-    background-color: #ffffff;
+    width: 18rem;
+    height: 18rem;
 }
 
 .map {
-    background-size: contain;
+    background-size: cover;
     width: 14rem;
     height: 14rem;
-    border-radius: 20rem;
 }
 
+.hero-text {
+    border-radius: 0.3rem;
+}
 
 /*............................................................................. bean detail page */
 .size-options{
@@ -35,11 +35,8 @@ body{
 
 /*............................................................................. nav bar */
 .nav-color{
-    background-color:#52719f;
+    background-color: 	#194e77;
 }
-
-
-
 
 
 .no-bullets {
