@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% load static %}
+{% block page_header %}
+<div class="container-fluid content">
+	<div class="row">
+		<div class="col text-center m-3">
+			<h2 class="display-4">{{ post.title }}Add Blog Post</h2>
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block content %}
+	<div class="container d-flex justify-content-center">
+		<div class="row">
+			<div class="col-12">
+				<form method="POST">
+					{% csrf_token %}
+					{{ form|crispy }}
+					<div class="container d-flex justify-content-center mb-3">
+						<button class="btn border-dark rounded">Add Post</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -58,9 +58,10 @@
 						</div>
 					</li>
 					<li>
-						<a class="nav-link text-white" href="{% url 'blog' %}">Blog</a></li>
+						<a class="nav-link text-white" href="{% url 'blog' %}">Blog</a>
+                    </li>
 					{% if user.is_authenticated %}
-					<li class="nav-item dropdown my-auto">
+					<li class="nav-item dropdown">
 						<a class="nav-link text-white text-center" href="#" id="profile" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">My Profile</a>
 						<div class="dropdown-menu border-0">
@@ -68,6 +69,7 @@
 							<a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
 						</div>
 					</li>
+                    </div>
 					{% else %}
 					<li>
 						<a class="nav-link text-white" href="{% url 'account_login' %}">Login</a>

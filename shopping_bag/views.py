@@ -18,3 +18,8 @@ def add_to_shopping_bag(request, item_id):
 
     request.session['shopping_bag'] = shopping_bag
     return redirect(redirect_url)
+
+
+# def remove_from_shopping_bag(request, item_id):
+#     """ Delete an item from the shopping bag """
+#     bag_item = 

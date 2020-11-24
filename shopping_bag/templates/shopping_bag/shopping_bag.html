@@ -4,7 +4,7 @@
 <div class="container-fluid content">
 <div class="row">
    <div class="col text-center m-3">
-      <h2 class="display-3">Shopping Bag</h2>
+      <h2 class="display-4">Shopping Bag</h2>
    </div>
 </div>
 <div class="container d-flex justify-content-center""
@@ -27,13 +27,13 @@
                   <p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
                </td>
                <td>
-                  <p>${{ item.bean.price }}</p>
+                  <p>£{{ item.bean.price }}</p>
                </td>
                <td>
                   <p>{{ item.quantity }}</p>
                </td>
                <td>
-                  <p>${{ item.bean.price | calc_subtotal:item.quantity }}</p>
+                  <p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
                </td>
             </tr>
 			{% endfor %}
@@ -45,8 +45,6 @@
 			</a>
             </div>
 </div>
-
-
          {% else %}
 		<div class="container d-flex justify-content-center">
 			<div class="row">

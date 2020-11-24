@@ -9,6 +9,14 @@
 {% endblock %}
 <!-- blog posts displayed in cards -->
 {% block content %}
+<div class="row">
+<div class="col-12 d-flex justify-content-center mb-5">
+		<div class="hero-text border border-dark bg-white w-75 p-2">
+			<p>Read all about my travels throughout the UK and abroad, 
+            sampling the many coffee products (and sweet treats!) on offer! </p>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<div class="row ">
 		{% for post in object_list %}
@@ -20,8 +28,8 @@
         </a>
 			</div>
 		</div>
-    {% endfor %} 
-  </div>
+		{% endfor %}
+	</div>
 </div>
 </div>
 {% endblock %}
