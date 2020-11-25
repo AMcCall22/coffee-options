@@ -10,22 +10,22 @@
 {% block content %}
 <div class="container w-75">
    {% for bean in bean %}
-   <div class="row border border-dark rounded my-3 p-4 h-100 bg-white size-options">
-      <div class="col-3 my-auto">
+   <div class="row border border-dark rounded my-3 p-4 bg-white align-items-center">
+      <div class="col-3">
          <h5 class>{{ bean.friendly_name}} ({{bean.country}})</h5>
       </div>
-    <div class="col-3 my-auto">
+    <div class="col-3">
          <p>Strength: {{ 5 }}</p>
       </div>
-      <div class="col-3 my-auto">
+      <div class="col-3">
          <p>Price: £{{ bean.price }}</p>
       </div>
-      <div class="col-3 my-auto">
+      <div class="col-3 mb-0">
          <form class="form" action="{% url 'add_to_shopping_bag' bean.id %}" method="POST">
             {% csrf_token %}          
-            <div class="form-group h-100">
-               <div class="input-group d-flex justify-content-center">
-                  <p class="my-auto">Quantity:</p>
+            <div class="form-group mb-0">
+               <div class="input-group d-flex justify-content-center ">
+                  <p class="pt-2">Quantity:</p>
                   <input class="form-control qty_input text-center btn-black rounded mx-1" type="number" name="quantity" value="0" min="1" max="99" data-item_id="{{ bean.id }}" id="id_qty_{{ bean.id }}">
                   <button type="submit" class="btn btn-sm btn-black rounded mt-2">Add to Basket</button>
                </div>
