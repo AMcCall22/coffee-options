@@ -58,3 +58,9 @@ body{
 .btn-style{
     width: 15rem;
     height: 15rem;}
+
+@media only screen and (min-width: 768px) {
+.bag{
+    width: 30rem;
+    }
+}
