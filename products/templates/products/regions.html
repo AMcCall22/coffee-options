@@ -21,9 +21,9 @@
 <div class="container-fluid">
 	<div class="row ">
 		{% for region in regions %}
-		<div class="col-3 d-flex justify-content-center mb-5">
-			<div class="card map-container border-dark text-center bg-white">
-				<div class="map m-auto">
+		<div class="col-sm-3 d-flex justify-content-center mb-5">
+			<div class="card map-container border-dark text-center bg-white pt-2">
+				<div class="map ">
 					<h5>{{ region.friendly_name }} </h5>
 					<a href="{% url 'countries_by_region' region.id %}" target="_blank">
 						<img class="img-fluid test2" src="{{ region.image.url }}" alt="{{ region.country_name }}"/></a>
