@@ -42,7 +42,7 @@
          <span class="navbar-toggler-icon"></span>
          </button>
 		<div class="collapse navbar-collapse" id="main-nav">
-			<a class="container navbar-brand d-none d-sm-block text-white" href="{% url 'all_regions' %}">Coffee Choices
+			<a class="container navbar-brand d-none d-lg-block text-white" href="{% url 'all_regions' %}">Coffee Choices
 				<i class="fas fa-mug-hot"></i></a>
 			<div class="container d-flex justify-content-center">
 				<ul class="navbar-nav">
@@ -94,6 +94,14 @@
 		</nav>
    </header>
 
+{% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% include 'includes/toasts/toast_success.html' %}
+        {% endfor %}
+    </div>
+{% endif %}
+
     {% block page_header %}
     {% endblock %}
 
@@ -126,10 +134,12 @@
 
 </footer>
 </div>
-{% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
+
     {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
     {% endblock %}
+
 </body>
 </html>
