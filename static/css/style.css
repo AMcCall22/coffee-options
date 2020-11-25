@@ -39,6 +39,9 @@ body{
     background-color: 	#194e77;
 }
 
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
 
 .no-bullets {
     list-style-type: none;

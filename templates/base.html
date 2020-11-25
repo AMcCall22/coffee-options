@@ -37,7 +37,7 @@
 
     <body>
     <header>
-      <nav class="navbar-expand-lg nav-color fixed-top">
+      <nav class="navbar-expand-lg nav-color fixed-top navbar-dark bg-secondary">
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
          </button>
@@ -58,7 +58,7 @@
 						</div>
 					</li>
 					<li>
-						<a class="nav-link text-white" href="{% url 'blog' %}">Blog</a>
+						<a class="nav-link text-white text-center" href="{% url 'blog' %}">Blog</a>
                     </li>
 					{% if user.is_authenticated %}
 					<li class="nav-item dropdown">
@@ -90,7 +90,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+
 		</nav>
    </header>
 
