@@ -3,17 +3,17 @@
 <div class="container-fluid content">
   <div class="row">
     <div class="col text-center m-3">
-      <h2 class="display-4">Coffee Blog</h2>
+      <h2 class="display-3 text-white">Coffee Blog</h2>
     </div>
   </div>
 {% endblock %}
 <!-- blog posts displayed in cards -->
 {% block content %}
 <div class="row">
-<div class="col-12 d-flex justify-content-center mb-5">
-		<div class="hero-text border border-dark bg-white w-75 p-2">
-			<p>Read all about my travels throughout the UK and abroad, 
-            sampling the many coffee products (and sweet treats!) on offer! </p>
+<div class="col-12 d-flex justify-content-center mb-3">
+		<div class="text-center text-white w-75 p-2">
+			<p class="h4">Read all about my travels throughout the UK and abroad, 
+            sampling the many coffee products (and sweet treats!) on offer!</p>
 		</div>
 	</div>
 </div>
@@ -22,10 +22,9 @@
 		{% for post in object_list %}
 		<div class="col-sm-12 d-flex justify-content-center px-0">
 			<div class="w-50 card border-dark mb-3 text-center">
-				<h5>{{ post.title }}</h5>
-				<a href="{% url 'blog-detail' post.pk %}"> - {{ post.author }}<br/>
-                {{ post.body }}
-        </a>
+				<a class="h2" href="{% url 'blog-detail' post.pk %}">Blog Title: {{ post.title }}</a>
+                <h4>Detail: {{ post.body }}</h4>
+                <h6>Posted: {{ post.post_date }}</h6>
 			</div>
 		</div>
 		{% endfor %}
