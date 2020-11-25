@@ -8,7 +8,7 @@
 	</div>
 <div class="row">
 <div class="col-12 d-flex justify-content-center mb-5">
-		<div class="hero-text border border-dark bg-white w-75 p-2">
+		<div class="hero-text text-center w-75 p-2">
 			<p>This is the site for coffee enthusiasts who like to try out new flavours and intensities!
 				You might already have a favourite coffee and fancy trying a different bean from the same region,
 				same intensity from a different region, or something new altogether! </p>
@@ -22,9 +22,8 @@
 	<div class="row ">
 		{% for region in regions %}
 		<div class="col-sm-3 d-flex justify-content-center mb-5">
-			<div class="card map-container border-dark text-center bg-white pt-2">
-				<div class="map ">
-					<h5>{{ region.friendly_name }} </h5>
+			<div class="card map-container border-dark text-center">
+				<div class="map my-auto">
 					<a href="{% url 'countries_by_region' region.id %}" target="_blank">
 						<img class="img-fluid test2" src="{{ region.image.url }}" alt="{{ region.country_name }}"/></a>
 				</div>

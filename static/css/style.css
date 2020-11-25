@@ -7,7 +7,6 @@ body{
     display: flex;
     flex-direction: column;
     /* background: url('/media/background/beans5.jpg') no-repeat center center fixed; */
-    /* background-color: lightgrey; */
     background-size: cover;
     height: 100%;
 
@@ -15,12 +14,14 @@ body{
 
 /*............................................................................. home page(regions) */
 .map-container {
-    width: 18rem;
-    height: 18rem;
+    width: 14rem;
+    height: 14rem;
+    background-color: 	#01c5c3;
 }
 
 .map {
     background-size: cover;
+    background-color: 	#01c5c3;
 }
 
 .hero-text {
