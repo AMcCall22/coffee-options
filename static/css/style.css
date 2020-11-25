@@ -7,7 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     /* background: url('/media/background/beans5.jpg') no-repeat center center fixed; */
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     background-size: cover;
     height: 100%;
 
@@ -21,8 +21,6 @@ body{
 
 .map {
     background-size: cover;
-    /* width: 14rem;
-    height: 14rem; */
 }
 
 .hero-text {
@@ -36,7 +34,7 @@ body{
 
 /*............................................................................. nav bar */
 .nav-color{
-    background-color: 	#194e77;
+    background-color: 	#c50103;
 }
 
 .navbar-toggle .icon-bar {
