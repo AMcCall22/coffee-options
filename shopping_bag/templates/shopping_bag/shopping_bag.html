@@ -2,67 +2,65 @@
 {% load bag_tools %}
 {% block content %}
 <div class="container-fluid content">
-<div class="row">
-   <div class="col text-center m-3">
-      <h2 class="display-4">Shopping Bag</h2>
+   <div class="row">
+      <div class="col text-center m-3">
+         <h2 class="display-4">Shopping Bag</h2>
+      </div>
    </div>
-</div>
-<div class="container d-flex justify-content-center""
-<div class="row w-50">
-   <div class="col-12">
-      {% if shopping_bag_items %}
-      <div class="rounded border border-dark bg-white">
-         <table class="table table-sm ">
-            <thead class="text-black">
+   <div class="container d-flex justify-content-center">
+   <div class="row w-50">
+      <div class="col-12">
+         {% if shopping_bag_items %}
+         <div class="rounded border border-dark bg-white">
+            <table class="table table-sm ">
+               <thead class="text-black">
+                  <tr>
+                     <th scope="col">Coffee</th>
+                     <th scope="col">Price</th>
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Subtotal</th>
+                  </tr>
+               </thead>
+               {% for item in shopping_bag_items %}
                <tr>
-                  <th scope="col">Coffee</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Subtotal</th>
+                  <td>
+                     <p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
+                  </td>
+                  <td>
+                     <p>£{{ item.bean.price }}</p>
+                  </td>
+                  <td>
+                     <p>{{ item.quantity }}</p>
+                  </td>
+                  <td>
+                     <p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
+                  </td>
                </tr>
-            </thead>
-            {% for item in shopping_bag_items %}
-            <tr>
-               <td>
-                  <p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
-               </td>
-               <td>
-                  <p>£{{ item.bean.price }}</p>
-               </td>
-               <td>
-                  <p>{{ item.quantity }}</p>
-               </td>
-               <td>
-                  <p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
-               </td>
-            </tr>
-			{% endfor %}
-			
-			</table>
+               {% endfor %}
+            </table>
             <div class="container d-flex justify-content-center mb-4">
-			<a href="{% url 'checkout' %}" class="btn btn-black border-dark w-25 rounded btn-lg">
-				<span>Checkout</span>
-			</a>
+               <a href="{% url 'checkout' %}" class="btn btn-black border-dark w-25 rounded btn-lg">
+               <span>Checkout</span>
+               </a>
             </div>
-</div>
+         </div>
          {% else %}
-		<div class="container d-flex justify-content-center">
-			<div class="row">
-            <div class="col-12">
-				<p>Your shopping bag is empty!</p>
-			</div>
-			</div>
-			<div class="row">
-            <div class="col-12">
-				<button href="{% url 'countries' %}" class="btn border-dark rounded">
-		         <span>Go back to Shop</span>
-		         </button>
-			</div>
-			</div>
-		</div>
+            <div class="row">
+               <div class="col-12">
+                  <p class="text-center">Your shopping bag is empty!</p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12 d-flex justify-content-center">
+                    <a href="{% url 'countries' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Go Back</a>
+               </div>
+            </div>
+         </div>
          {% endif %}
       </div>
    </div>
 </div>
-</div>
+
 {% endblock %}
+
+
