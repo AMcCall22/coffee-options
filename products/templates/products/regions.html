@@ -3,15 +3,14 @@
 <div class="container content">
 	<div class="row">
 		<div class="col text-center m-3">
-			<h2 class="display-4">Coffee Choices</h2>
+			<h2 class="display-3 text-white ">Coffee Choices</h2>
 		</div>
 	</div>
 <div class="row">
 <div class="col-12 d-flex justify-content-center mb-5">
-		<div class="hero-text text-center w-75 p-2">
-			<p>This is the site for coffee enthusiasts who like to try out new flavours and intensities!
-				You might already have a favourite coffee and fancy trying a different bean from the same region,
-				same intensity from a different region, or something new altogether! </p>
+		<div class="text-center text-white w-75 p-2 mb-5">
+			<p class="h4">This is the site for coffee enthusiasts who like to try out new flavours and intensities!
+				You might already have a favourite coffee and fancy trying a different bean from the same region, or something new altogether! </p>
 		</div>
 	</div>
 </div>
@@ -21,15 +20,22 @@
 <div class="container-fluid">
 	<div class="row ">
 		{% for region in regions %}
-		<div class="col-sm-3 d-flex justify-content-center mb-5">
-			<div class="card map-container border-dark text-center">
-				<div class="map my-auto">
+		<div class="col-sm-3 d-flex justify-content-center">
+			<div class="zoom text-center">
+				<div class="my-auto">
 					<a href="{% url 'countries_by_region' region.id %}" target="_blank">
 						<img class="img-fluid test2" src="{{ region.image.url }}" alt="{{ region.country_name }}"/></a>
 				</div>
 			</div>
 		</div>
 		{% endfor %}
+	</div>
+</div>
+<div class="row">
+<div class="col-12 d-flex justify-content-center mt-5">
+		<div class="text-center text-white w-75 p-2 mb-5">
+			<p class="h4">Please read this site's blog for more coffee inspiration from around the world!</p>
+		</div>
 	</div>
 </div>
 </div>
