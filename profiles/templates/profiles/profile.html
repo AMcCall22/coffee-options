@@ -5,89 +5,88 @@
 {% endblock %}
 {% block page_header %}
 <div class="container-fluid content">
-  <div class="row">
-    <div class="col text-center m-3">
-      <h2 class="display-4">My Profile</h2>
-    </div>
-  </div>
-{% endblock %}
-{% block content %}
+   <div class="row">
+      <div class="col text-center m-3">
+         <h2 class="display-4 text-white">My Profile</h2>
+      </div>
+   </div>
+   {% endblock %}
+   {% block content %}
+   <div class="container">
+      <div class="row">
+         <div class="col-12 d-flex justify-content-center mb-4">
+            <button type="button" class="btn btn-lg btn-light" data-toggle="modal" data-target="#delivery">Default Delivery Information</button>
+            <div class="modal fade" id="delivery" role="dialog">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                     <div class="card-header">Default Delivery Address
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     </div>
+                     <div class="card-body">
+                        <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                           {% csrf_token %}
+                           {{ form|crispy }}
+                           <button class="btn border-dark rounded">Update Information</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 <div class="container">
-	<div class="row">
-		<div class="col-6 d-flex justify-content-center">
-			<button type="button" class="btn btn-lg btn-light btn--style" data-toggle="modal" data-target="#shortterm">Default Delivery Information</button>
-			<div class="modal fade" id="shortterm" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="card-header">Default Delivery Address
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="card-body">
-							<form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-								{% csrf_token %}
-								{{ form|crispy }}
-								<button class="btn border-dark rounded">Update Information</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				</div>
-				</div>
-		<div class="col-6 d-flex justify-content-center">
-			<button type="button" class="btn btn-lg btn-light btn--style" data-toggle="modal" data-target="#longterm">Previous Orders</button>
-			<div class="modal fade" id="longterm" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<div class="collapse show card mx-auto">
-						<div class="card-header">Previous Orders
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="card-body">
-							<div class="order-history table-responsive">
-								<table class="table table-sm table-borderless">
-									<thead>
-										<tr>
-											<th>Order Number</th>
-											<th>Date</th>
-											<th>Items</th>
-											<th>Order Total</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for order in orders %}
-										<tr>
-											<td>
-												<p>{{ order.order_number|truncatechars:8}}
-												</p>
-											</td>
-											<td>{{ order.date }}</td>
-											<td>
-												<ul class="list-unstyled">
-													{% for item in order.lineitems.all %}
-													<li class="small">
-														{% if item.bean.has_sizes %}
-														Size {{ item.bean.size|upper }}
-														{% endif %}{{ item.bean }} x {{ item.quantity }}
-													</li>
-													{% endfor %}
-												</ul>
-											</td>
-											<td>£{{ order.order_total }}</td>
-										</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+      <div class="row">
+         <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-lg btn-light btn--style" data-toggle="modal" data-target="#previous">Previous Orders</button>
+            <div class="modal fade" id="previous" role="dialog">
+               <div class="modal-dialog modal-lg">
+                  <div class="collapse show card mx-auto">
+                     <div class="card-header">Previous Orders
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     </div>
+                     <div class="card-body">
+                        <div class="order-history table-responsive">
+                           <table class="table table-sm table-borderless">
+                              <thead>
+                                 <tr>
+                                    <th>Order Number</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Order Total</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 {% for order in orders %}
+                                 <tr>
+                                    <td>
+                                       <p>{{ order.order_number|truncatechars:8}}
+                                       </p>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                       <ul class="list-unstyled">
+                                          {% for item in order.lineitems.all %}
+                                          <li class="small">
+                                             {% if item.bean.has_sizes %}
+                                             Size {{ item.bean.size|upper }}
+                                             {% endif %}{{ item.bean }} x {{ item.quantity }}
+                                          </li>
+                                          {% endfor %}
+                                       </ul>
+                                    </td>
+                                    <td>£{{ order.order_total }}</td>
+                                 </tr>
+                                 {% endfor %}
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}
-
-
-
-
-
