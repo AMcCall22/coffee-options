@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 
 
@@ -20,3 +20,12 @@ def add_to_shopping_bag(request, item_id):
 
     request.session['shopping_bag'] = shopping_bag
     return redirect(redirect_url)
+
+
+def remove_from_shopping_bag(request, item_id):
+    """Remove the item from the shopping bag"""
+    shopping_bag = request.session.get('shopping_bag', {})
+    shopping_bag.pop(item_id)
+
+    request.session['shopping_bag'] = shopping_bag
+    return HttpResponse(status=200)
