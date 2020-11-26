@@ -22,7 +22,8 @@ def cache_checkout_data(request):
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
-            'shopping_bag': json.dumps(request.session.get('shopping_bag', {})),
+            'shopping_bag': json.dumps(request.session.get
+                                       ('shopping_bag', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
@@ -68,14 +69,16 @@ def checkout(request):
                     return redirect(reverse('view_shopping_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                            args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         shopping_bag = request.session.get('shopping_bag', {})
         if not shopping_bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(request,
+                           "There's nothing in your bag at the moment")
             return redirect(reverse('countries'))
 
         current_bag = shopping_bag_contents(request)

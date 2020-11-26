@@ -15,7 +15,9 @@ Code borrowed from CI's Boutique Ado project, Models Part 2
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
@@ -25,7 +27,8 @@ class Order(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    order_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      default=0)
 
     def _generate_order_number(self):
         """
@@ -38,7 +41,8 @@ class Order(models.Model):
         Update grand total each time a line item is added
 
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.order_total = self.lineitems.aggregate
+        (Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.save()
 
     def save(self, *args, **kwargs):
@@ -55,10 +59,13 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, related_name='lineitems')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,
+                              null=True, related_name='lineitems')
     bean = models.ForeignKey(Bean, on_delete=models.CASCADE, null=True)
     quantity = models.IntegerField()
-    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                         null=False, blank=False,
+                                         editable=False, default=0)
 
     def save(self, *args, **kwargs):
         """
