@@ -21,39 +21,28 @@ body{
     background-color: #fff;
 }
 
-.no-bullets {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
 
-.corners {
-    border-radius: 0.2rem;
-}
+/*............................................................................. nav bar */
 
 .footer{
     background-color:	#194e77;
     flex-shrink: 0;
-    /* color: white; */
 }
 
 .content {
   flex: 1 0 auto;
 }
 
+/*............................................................................. regions */
 .zoom:hover {
     transform: scale(1.3);
 }
 
-
-.btn-style{
-    width: 15rem;
-    height: 15rem;}
-
+/*............................................................................. shopping bag */
 .remove-item{
     cursor: pointer;}
 
-
+/*............................................................................. media queries */
 @media only screen and (min-width: 768px) {
 .bag{
     width: 35rem;
