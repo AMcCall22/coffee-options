@@ -4,7 +4,6 @@ from .models import Bean, Country, Region
 
 def all_regions(request):
     """ A view to show all coffee regions available  """
-
     regions = Region.objects.all()
 
     context = {
@@ -28,7 +27,6 @@ def all_countries(request):
     """ A view to show all countries  """
 
     countries = Country.objects.all()
-    
 
     context = {
         'countries': countries,
