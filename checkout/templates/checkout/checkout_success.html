@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Template rendered once a successful checkout has occurred  -->
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% endblock %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"> 
+{% endblock %} 
 
 {% block content %}
 <div class="row text-center content ">
-	<div class="col-12">
-		<h2 class="logo-font mb-4">Thankyou for your purchase!</h2>
-		<p>A confirmation email will be sent shortly</p>
-	</div>
+    <div class="col-12">
+        <h2 class="logo-font mb-4">Thankyou for your purchase!</h2>
+        <p>A confirmation email will be sent shortly</p>
+    </div>
 </div>
-
 {% endblock %}
