@@ -1,7 +1,6 @@
 /*
     Core logic/payment flow for this comes from here:
     https://stripe.com/docs/payments/accept-a-payment
-
 */
 var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 var clientSecret = $("#id_client_secret").text().slice(1, -1);
@@ -26,7 +25,6 @@ var card = elements.create("card", {
     style: style,
 });
 card.mount("#card-element");
-
 // Handle realtime validation errors on the card element
 card.addEventListener("change", function(event) {
     var errorDiv = document.getElementById("card-errors");
@@ -42,17 +40,14 @@ card.addEventListener("change", function(event) {
         errorDiv.textContent = "";
     }
 });
-
 // Handle form submit
 var form = document.getElementById("payment-form");
-
 form.addEventListener("submit", function(ev) {
     ev.preventDefault();
     card.update({
         disabled: true,
     });
     $("#submit-button").attr("disabled", true);
-
     var saveInfo = Boolean($("#id-save-info").attr("checked"));
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -62,7 +57,6 @@ form.addEventListener("submit", function(ev) {
         save_info: saveInfo,
     };
     var url = "/checkout/cache_checkout_data/";
-
     $.post(url, postData)
         .done(function() {
             stripe
@@ -97,10 +91,10 @@ form.addEventListener("submit", function(ev) {
                     if (result.error) {
                         var errorDiv = document.getElementById("card-errors");
                         var html = `
-                            <span class="icon" role="alert">
-                            <i class="fas fa-times"></i>
-                            </span>
-                            <span>${result.error.message}</span>`;
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
                         $(errorDiv).html(html);
                         $(errorDiv).html(html);
                         card.update({
@@ -114,5 +108,8 @@ form.addEventListener("submit", function(ev) {
                     }
                 });
         })
+        .fail(function() {
+            // just reload the page, the error will be in django messages
+            location.reload();
+        });
 });
-
