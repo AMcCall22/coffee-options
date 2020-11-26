@@ -22,9 +22,8 @@
 		{% for post in object_list %}
 		<div class="col-sm-12 d-flex justify-content-center px-0">
 			<div class="w-50 card border-dark mb-3 text-center">
-				<a class="h2" href="{% url 'blog-detail' post.pk %}">Blog Title: {{ post.title }}</a>
-                <h4>Detail: {{ post.body }}</h4>
-                <h6>Posted: {{ post.post_date }}</h6>
+				<a class="h2" href="{% url 'blog-detail' post.pk %}">{{ post.title }}</a>
+                    <h6>Posted: {{ post.post_date }}</h6>
 			</div>
 		</div>
 		{% endfor %}
