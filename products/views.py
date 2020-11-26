@@ -28,6 +28,7 @@ def all_countries(request):
     """ A view to show all countries  """
 
     countries = Country.objects.all()
+    
 
     context = {
         'countries': countries,

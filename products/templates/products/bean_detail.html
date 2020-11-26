@@ -6,13 +6,15 @@
       <h2 class="display-4 text-white">Bag Size Options</h2>
     </div>
   </div>
+
 {% endblock %}
 {% block content %}
 <div class="container bag">
    {% for bean in bean %}
    <div class="row border border-dark rounded my-3 p-4 bg-white align-items-center">
       <div class="col-4">
-         <h5 class="mb-0">{{ bean.friendly_name}} ({{bean.country}})</h5>
+         <h5 class="mb-0">{{ bean.friendly_name}}</h5> 
+        <h6>{{ bean.country }}</h6>
       </div>
       <div class="col-4">
          <p class="mb-0">Price: £{{ bean.price }}</p>
@@ -22,7 +24,7 @@
             {% csrf_token %}          
             <div class="form-group mb-0">
                <div class="input-group d-flex justify-content-center ">
-                  <p class="mb-0 pt-1">Quantity:</p>
+                  <p class="mb-0 pt-1"><small>Quantity:</small></p>
                   <input class="form-control qty_input text-center btn-black rounded mx-1" type="number" name="quantity" value="0" min="1" max="99" data-item_id="{{ bean.id }}" id="id_qty_{{ bean.id }}">
                   <button type="submit" class="btn btn-sm btn-black rounded mt-2">Add to Basket</button>
                </div>
