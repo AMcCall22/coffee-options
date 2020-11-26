@@ -21,7 +21,7 @@ class Country(models.Model):
     region = models.ForeignKey('Region', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField(default=False)
     image = models.ImageField(default=False)
-
+    strength = models.CharField(max_length=5, default=3)
 
     def __str__(self):
         return self.name
@@ -35,7 +35,6 @@ class Bean(models.Model):
     bag_size = models.CharField(max_length=254)
     sizes = models.BooleanField(default=False, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    strength = models.CharField(max_length=5)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
