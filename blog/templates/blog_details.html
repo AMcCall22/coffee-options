@@ -1,38 +1,40 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %} 
+{% load static %} 
+
 {% block page_header %}
-<div class="container-fluid content">
-  <div class="row">
-    <div class="col text-center m-3">
-      <h2 class="display-4 text-white">{{ post.title }}</h2>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col text-center m-3">
+            <h2 class="display-4 text-white">{{ post.title }}</h2>
+        </div>
     </div>
-  </div>
+</div>
 {% endblock %}
-<!-- blog posts displayed in cards -->
+
+<!-- blog posts with detail displayed in cards -->
 {% block content %}
-<div class="container">
-	<div class="row d-flex justify-content-center ">
-		<div class="col-sm-12 d-flex justify-content-center px-0">
-			<div class="w-50 card border-dark mb-3 text-center">
-				<p>{{ post.body }}</p>
+<div class="container content">
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-center px-0">
+            <div class="w-50 card border-dark mb-3 text-center">
+                <p>{{ post.body }}</p>
                 <p class="small">{{ post.post_date }}</p>
-			</div>
-		</div>
-	</div>
-					
-					<div class="row">
-						<div class="col-12 d-flex justify-content-center mb-1">
-							<form action="{% url 'like-post' post.pk %}" method="POST">
-								{% csrf_token %}
-								<button type="submit" name="post_id" value="{{ post.id }}" class="btn border-dark rounded"><i class="fas fa-thumbs-up"></i></button>
-								<p class="text-white">{{ total_likes }} Likes</p>
-							</form>
-						</div>
-					</div>
-<div class="row">
-						<div class="col-12 d-flex justify-content-center mb-3">
-							<a href="{% url 'blog' %}" class="btn btn-light btn-sm active"><i class="fas fa-chevron-left"></i> Go Back</a>
-						</div>
-					</div>
-					</div>
-					</div>
-{% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-1">
+            <form action="{% url 'like-post' post.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="post_id" value="{{ post.id }}" class="btn border-dark rounded"><i class="fas fa-thumbs-up"></i></button>
+                <p class="text-white">{{ total_likes }} Likes</p>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-3">
+            <a href="{% url 'blog' %}" class="btn btn-light btn-sm active border-dark"><i class="fas fa-chevron-left"></i> Go Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}		
