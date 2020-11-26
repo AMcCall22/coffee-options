@@ -1,41 +1,41 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %} 
+{% load static %} 
+
 {% block page_header %}
 <div class="container-fluid content">
-  <div class="row">
-    <div class="col text-center m-3">
-      <h2 class="display-4 text-white">Bag Size Options</h2>
+    <div class="row">
+        <div class="col text-center m-3">
+            <h2 class="display-4 text-white">Bag Size Options</h2>
+        </div>
     </div>
-  </div>
-
-{% endblock %}
+{% endblock %} 
+<!-- Bag size options for coffee beans -->
 {% block content %}
-<div class="container bag">
-   {% for bean in bean %}
-   <div class="row border border-dark rounded my-3 p-4 bg-white align-items-center">
-      <div class="col-4">
-         <h5 class="mb-0">{{ bean.friendly_name}}</h5> 
-        <h6>{{ bean.country }}</h6>
-      </div>
-      <div class="col-4">
-         <p class="mb-0">Price: £{{ bean.price }}</p>
-      </div>
-      <div class="col-4 mb-0">
-         <form class="form" action="{% url 'add_to_shopping_bag' bean.id %}" method="POST">
-            {% csrf_token %}          
-            <div class="form-group mb-0">
-               <div class="input-group d-flex justify-content-center ">
-                  <p class="mb-0 pt-1"><small>Quantity:</small></p>
-                  <input class="form-control qty_input text-center btn-black rounded mx-1" type="number" name="quantity" value="0" min="1" max="99" data-item_id="{{ bean.id }}" id="id_qty_{{ bean.id }}">
-                  <button type="submit" class="btn btn-sm btn-black rounded mt-2">Add to Basket</button>
-               </div>
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+    <div class="container bag">
+        {% for bean in bean %}
+        <div class="row border border-dark rounded my-3 p-4 bg-white align-items-center">
+            <div class="col-4">
+                <h5 class="mb-0">{{ bean.friendly_name}}</h5>
+                <h6>{{ bean.country }}</h6>
             </div>
-         </form>
-      </div>
-   </div>
-
-   {% endfor %}
-
-</div>
+            <div class="col-4">
+                <p class="mb-0">Price: £{{ bean.price }}</p>
+            </div>
+            <div class="col-4 mb-0">
+                <form class="form" action="{% url 'add_to_shopping_bag' bean.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group mb-0">
+                        <div class="input-group d-flex justify-content-center ">
+                            <p class="mb-0 pt-1"><small>Quantity:</small></p>
+                            <input class="form-control qty_input text-center btn-black rounded mx-1" type="number" name="quantity" value="0" min="1" max="99" data-item_id="{{ bean.id }}" id="id_qty_{{ bean.id }}">
+                            <button type="submit" class="btn btn-sm btn-black rounded mt-2">Add to Basket</button>
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

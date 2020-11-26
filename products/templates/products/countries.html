@@ -1,28 +1,30 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %} 
+{% load static %}
+
 {% block page_header %}
 <div class="container-fluid content">
-  <div class="row">
-    <div class="col text-center m-3">
-      <h2 class="display-3 text-white">Beans</h2>
+    <div class="row">
+        <div class="col text-center m-3">
+            <h2 class="display-3 text-white">Beans</h2>
+        </div>
     </div>
-  </div>
 {% endblock %}
 <!-- countries products displayed in cards -->
 {% block content %}
-<div class="container">
-	<div class="row d-flex justify-content-center">
-		{% for countries in countries %}
-		<div class="col-sm-4 d-flex justify-content-center px-0">
-			<div class="w-50 card border-dark mb-3 text-center">
-				<h5>{{ countries.friendly_name }}</h5>
-				<h6>Strength: {{ countries.strength }}</h6>
-				<a href="{% url 'bean_detail' countries.id %}" target="_blank">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            {% for countries in countries %}
+            <div class="col-sm-4 d-flex justify-content-center px-0">
+                <div class="w-50 card border-dark mb-3 text-center">
+                    <h5>{{ countries.friendly_name }}</h5>
+                    <h6>Strength: {{ countries.strength }}</h6>
+                    <a href="{% url 'bean_detail' countries.id %}" target="_blank">
 					<img class="card-img-top" src="{{ countries.image.url }}" alt="{{ countries.country_name }}"/></a>
-					<p>{{ countries.description }}</p>
-			</div>
-		</div>
-		{% endfor %}
-	</div>
-</div>
+                    <p>{{ countries.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
