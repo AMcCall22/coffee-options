@@ -196,8 +196,8 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-# options = DATABASES['default'].get('OPTIONS', {})
-# options.pop('sslmode', None)
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
 
 # Stripe
 STRIPE_CURRENCY = 'usd'
