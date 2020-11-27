@@ -10,52 +10,51 @@
 {% endblock %} 
 <!-- Bag size options for coffee beans -->
 {% block content %}
-   <div class="container d-flex justify-content-center content">
+   <div class="container d-flex justify-content-center content p-0">
       <div class="row no-gutters">
          <div class="col-12">
             {% if shopping_bag_items %}
-            <div class="rounded border border-dark bg-white">
-               <table class="table table-sm ">
-                  <thead class="text-black">
-                     <tr>
-                        <th scope="col">Coffee</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Subtotal</th>
-                     </tr>
-                  </thead>
-                  {% for item in shopping_bag_items %}
-                  <tr>
-                     <td>
-                        <p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
-                     </td>
-                     
-                        <td>
-                           <p>£{{ item.bean.price }}</p>
-                        </td>
-                        <td>
-                           <p>{{ item.quantity }}</p>
-                        </td>
-                        <td>
-                           <p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
-                        </td>
-                        <td>
-                           <div class="container d-flex justify-content-center mb-4">
-                              <button id="remove_{{ item.item_id }}" class="remove-item btn btn-sm btn-light">
-                              <span>Remove</span>
-                              </button>
-                           </div>
-                        </td>
-                    {% endfor %}
-                  </tr>
-               </table>
+			<div class="rounded border border-dark bg-white bag mb-3">
+				<table class="table table-sm">
+					<thead class="text-black">
+						<tr>
+							<th scope="col">Coffee</th>
+							<th scope="col">Price</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Subtotal</th>
+						</tr>
+					</thead>
+					{% for item in shopping_bag_items %}
+					<tr>
+						<td>
+							<p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
+						</td>
+			
+						<td>
+							<p>£{{ item.bean.price }}</p>
+						</td>
+						<td>
+							<p>{{ item.quantity }}</p>
+						</td>
+						<td>
+							<p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
+						</td>
+						<td class="remove">
+							<button id="remove_{{ item.item_id }}" class="remove-item btn btn-sm btn-light">
+			                <span>Remove</span>
+			                </button>
+						</td>
+						{% endfor %}
+					</tr>
+				</table>
+			</div>
                <div class="container d-flex justify-content-center mb-4">
                <a href="{% url 'checkout' %}" class="btn btn-sm btn-light">
                <span>Checkout</span>
                </a>
                </div>
                </div>
-
+         
             </div>
          </div>
          {% else %}
@@ -69,7 +68,7 @@
                <a href="{% url 'countries' %}" class="btn btn-light btn-sm active"><i class="fas fa-chevron-left"></i> Go Back</a>
             </div>
          </div>
-      </div>
+      
       {% endif %}
    </div>
 </div>

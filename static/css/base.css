@@ -41,13 +41,24 @@ body{
 
 /*............................................................................. shopping bag */
 .remove-item{
-    cursor: pointer;}
+    cursor: pointer;
+    font-size: 0.5rem;}
 
 /*............................................................................. media queries */
-/* @media only screen and (min-width: 768px) {
+@media only screen and (max-width: 414px) {
 .bag{
-    width: 35rem;
+    width: 23rem;
     }
-} */
+.remove{
+    font-size: 1rem;}
+}
+
+@media only screen and (max-width: 360px) {
+.bag{
+    width: 21rem;
+    }
+.remove{
+    font-size: 0.75rem;}
+}
 
 
