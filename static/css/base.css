@@ -6,9 +6,10 @@ body{
     padding-top: 65px;
     display: flex;
     flex-direction: column;
-    background: url('/media/wooden_2.jpg') no-repeat center center fixed;
+    /* background: url('/media/wooden_2.jpg') no-repeat center center fixed; */
     background-size: cover;
     height: 100%;
+    background-color:	#2e95ac;
 
 }
 
