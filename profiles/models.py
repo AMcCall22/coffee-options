@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+"""
+Code adapted from from CI's Boutique Ado project,
+Profile App section
+"""
+
 
 class UserProfile(models.Model):
     """

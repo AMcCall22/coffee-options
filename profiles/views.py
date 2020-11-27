@@ -6,6 +6,10 @@ from .forms import UserProfileForm
 
 from checkout.models import Order
 
+"""
+Code adapted from from CI's Boutique Ado project, Checkout section
+"""
+
 
 def profile(request):
     """ Display the user's profile. """

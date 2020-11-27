@@ -9,11 +9,14 @@ from profiles.models import UserProfile
 from django_countries.fields import CountryField
 
 """
-Code borrowed from CI's Boutique Ado project, Models Part 2
+Code adapted from from CI's Boutique Ado project, Checkout section
 """
 
 
 class Order(models.Model):
+    """
+    A model for each order in the database.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
@@ -77,3 +80,4 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return '{self.bean.country} on order {self.order.order_number}'
+

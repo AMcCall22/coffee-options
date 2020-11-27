@@ -1,8 +1,16 @@
 from django import forms
 from .models import UserProfile
 
+"""
+Code adapted from from CI's Boutique Ado project,
+Profile App section
+"""
+
 
 class UserProfileForm(forms.ModelForm):
+    """
+    A form for the user profile to save/update delivery address
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)

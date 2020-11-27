@@ -4,6 +4,9 @@ from django.urls import reverse
 
 
 class Post(models.Model):
+    """
+    A model for each blog in the database.
+    """
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()

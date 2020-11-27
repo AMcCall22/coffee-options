@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Region(models.Model):
-
+    """
+    A model for each region in the database.
+    """
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     image = models.ImageField(default=False)
@@ -16,12 +18,14 @@ class Region(models.Model):
 
 
 class Country(models.Model):
+    """
+    A model for each country in the database.
+    Foreign key relates to the Region Model.
+    """
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    region = models.ForeignKey('Region', 
-                                null=True, 
-                                blank=True,
-                                on_delete=models.SET_NULL)
+    region = models.ForeignKey('Region', null=True,
+                               blank=True, on_delete=models.SET_NULL)
     description = models.TextField(default=False)
     image = models.ImageField(default=False)
     strength = models.CharField(max_length=5, default=3)
@@ -34,6 +38,10 @@ class Country(models.Model):
 
 
 class Bean(models.Model):
+    """
+    A model for each bag of beans in the database.
+    Foreign key relates to the Country Model.
+    """
     country = models.ForeignKey('Country', null=True, blank=True,
                                 on_delete=models.SET_NULL)
     bag_size = models.CharField(max_length=254)

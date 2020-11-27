@@ -1,6 +1,11 @@
 from django.shortcuts import get_object_or_404
 from products.models import Bean
 
+"""
+Code adapted from from CI's Boutique Ado project,
+Shopping Bag section
+"""
+
 
 def shopping_bag_contents(request):
 

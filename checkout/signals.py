@@ -4,7 +4,7 @@ from django.dispatch import receiver
 from .models import OrderLineItem
 
 """
-Code borrowed from CI's Boutique Ado project, Admin, Signals & Forms Part 1.
+Code adapted from from CI's Boutique Ado project, Checkout section
 """
 
 

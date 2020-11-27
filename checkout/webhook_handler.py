@@ -9,6 +9,9 @@ from profiles.models import UserProfile
 import json
 import time
 
+"""
+Code adapted from from CI's Boutique Ado project, Checkout section
+"""
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -119,7 +122,7 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data ['items_by_size'].items():
+                        for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=bean,
@@ -145,3 +148,4 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
+
