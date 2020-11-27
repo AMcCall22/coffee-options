@@ -1,13 +1,14 @@
 {% extends "base.html" %} {% load static %} 
 {% load bag_tools %}
 {% block content %}
-<div class="container-fluid content">
+<div class="container-fluid">
    <div class="row">
       <div class="col text-center m-3">
          <h2 class="display-4 text-white">Shopping Bag</h2>
       </div>
    </div>
-   <div class="container d-flex justify-content-center">
+</div>
+   <div class="container d-flex justify-content-center content">
       <div class="row">
          <div class="col-12">
             {% if shopping_bag_items %}
@@ -26,23 +27,12 @@
                      <td>
                         <p>{{ item.bean.friendly_name }} ({{ item.bean.country }}) </p>
                      </td>
-                     <div class="input-group">
+                     
                         <td>
                            <p>£{{ item.bean.price }}</p>
                         </td>
                         <td>
-                           <form class="form update-form" method="POST" action="{% url 'remove_from_shopping_bag' item.item_id %}">
-                              {% csrf_token %}
-                              <div class="form-group">
-                                 <div class="input-group">
-                                    <input class="form-control form-control-sm qty_input" 
-                                       type="number"
-                                       name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                       data-item_id="{{ item.item_id }}"
-                                       id="id_qty_{{ item.item_id }}">                                                                                                                                           
-                                 </div>
-                              </div>
-                           </form>
+                           <p>{{ item.quantity }}</p>
                         </td>
                         <td>
                            <p>£{{ item.bean.price | calc_subtotal:item.quantity }}</p>
@@ -54,7 +44,7 @@
                               </button>
                            </div>
                         </td>
-                        {% endfor %}
+                    {% endfor %}
                </table>
                <div class="container d-flex justify-content-center mb-4">
                <a href="{% url 'checkout' %}" class="btn btn-sm btn-light">
@@ -79,9 +69,7 @@
       {% endif %}
    </div>
 </div>
-</div>
 {% endblock %}
-
 {% block postloadjs %}
 <script type="text/javascript">
    // Remove item from shoppingi bag and reload page on click
@@ -98,4 +86,3 @@
    })
 </script>
 {% endblock %}
-
