@@ -1,15 +1,17 @@
 {% extends "base.html" %} {% load static %} 
 {% load bag_tools %}
+{% block page_header %}
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col text-center m-3">
+            <h2 class="display-4 text-white">Shopping Bag</h2>
+        </div>
+    </div>
+{% endblock %} 
+<!-- Bag size options for coffee beans -->
 {% block content %}
-<div class="container-fluid">
-   <div class="row">
-      <div class="col text-center m-3">
-         <h2 class="display-4 text-white">Shopping Bag</h2>
-      </div>
-   </div>
-</div>
    <div class="container d-flex justify-content-center content">
-      <div class="row">
+      <div class="row no-gutters">
          <div class="col-12">
             {% if shopping_bag_items %}
             <div class="rounded border border-dark bg-white">
@@ -22,7 +24,6 @@
                         <th scope="col">Subtotal</th>
                      </tr>
                   </thead>
-                
                   {% for item in shopping_bag_items %}
                   <tr>
                      <td>
@@ -53,6 +54,7 @@
                <span>Checkout</span>
                </a>
                </div>
+               </div>
 
             </div>
          </div>
@@ -77,14 +79,4 @@
    // Remove item from shoppingi bag and reload page on click
    $('.remove-item').click(function(e) {
        var csrfToken = "{{ csrf_token }}";
-       var itemId = $(this).attr('id').split('remove_')[1];
-       var url = `/shopping_bag/remove/${itemId}/`;
-       var data = {'csrfmiddlewaretoken': csrfToken };
-   
-       $.post(url, data)
-        .done(function() {
-            location.reload();
-        });
-   })
-</script>
 {% endblock %}

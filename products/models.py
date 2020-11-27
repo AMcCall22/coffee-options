@@ -18,8 +18,10 @@ class Region(models.Model):
 class Country(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    region = models.ForeignKey('Region', null=True, blank=True,
-                               on_delete=models.SET_NULL)
+    region = models.ForeignKey('Region', 
+                                null=True, 
+                                blank=True,
+                                on_delete=models.SET_NULL)
     description = models.TextField(default=False)
     image = models.ImageField(default=False)
     strength = models.CharField(max_length=5, default=3)

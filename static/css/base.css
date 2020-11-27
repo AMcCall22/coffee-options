@@ -9,7 +9,7 @@ body{
     /* background: url('/media/wooden_2.jpg') no-repeat center center fixed; */
     background-size: cover;
     height: 100%;
-    background-color:	#2e95ac;
+    background-color:	#c0dfe6;
 
 }
 
@@ -44,10 +44,10 @@ body{
     cursor: pointer;}
 
 /*............................................................................. media queries */
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
 .bag{
     width: 35rem;
     }
-}
+} */
 
 
