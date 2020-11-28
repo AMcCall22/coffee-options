@@ -13,6 +13,7 @@ import time
 Code adapted from from CI's Boutique Ado project, Checkout section
 """
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -148,4 +149,3 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
-

@@ -80,4 +80,3 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return '{self.bean.country} on order {self.order.order_number}'
-

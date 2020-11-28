@@ -12,6 +12,7 @@ import stripe
 Code adapted from from CI's Boutique Ado project, Checkout section
 """
 
+
 @require_POST
 @csrf_exempt
 def webhook(request):
@@ -60,4 +61,3 @@ def webhook(request):
     # Call the event handler with the event
     response = event_handler(event)
     return response
-

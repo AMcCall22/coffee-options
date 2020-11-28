@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 
 """
-Code adapted from from CI's Boutique Ado project, 
+Code adapted from from CI's Boutique Ado project,
 Shopping Bag section
 """
+
 
 def view_shopping_bag(request):
     """ A view that renders the bag contents page """
