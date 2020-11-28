@@ -61,7 +61,7 @@ def checkout(request):
                             order=order,
                             bean=bean,
                             quantity=item_data,
-                        )
+                    )
                     order_line_item.save()
                 except Bean.DoesNotExist:
                     order.delete()

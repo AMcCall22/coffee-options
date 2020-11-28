@@ -118,33 +118,20 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'coffee_options.wsgi.application'
 
 
-# # Database
-# # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-# if 'DATABASE_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
-
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 if 'DATABASE_URL' in os.environ:
-    print("Using Heroku postgres")
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
-    print("Using Gitpod db.sqlite3")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -222,7 +209,7 @@ LOGIN_REDIRECT_URL = '/'
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'allthingscoffee@example.com'
+    DEFAULT_FROM_EMAIL = 'coffee_choices@example.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
