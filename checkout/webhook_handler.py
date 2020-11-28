@@ -9,6 +9,10 @@ from profiles.models import UserProfile
 import json
 import time
 
+"""
+Code adapted from from CI's Boutique Ado project, Checkout section
+"""
+
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -46,9 +50,8 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
-        # pid = intent.id
-        shopping_bag = intent.metadata.shopping_bag
-
+        pid = intent.id
+        save_info = intent.metadata.shopping_bag
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
 
@@ -84,6 +87,7 @@ class StripeWH_Handler:
                     postcode__iexact=shipping_details.address.postal_code,
                     country__iexact=shipping_details.address.country,
                     phone_number__iexact=shipping_details.phone,
+                    stripe_pid=pid
                 )
                 order_exists = True
                 break
@@ -108,6 +112,7 @@ class StripeWH_Handler:
                     postcode=shipping_details.address.postal_code,
                     country=shipping_details.address.country,
                     phone_number=shipping_details.phone,
+                    stripe_pid=pid
                 )
                 for item_id, item_data in json.loads(shopping_bag).items():
                     bean = Bean.objects.get(id=item_id)
@@ -119,7 +124,7 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data ['items_by_size'].items():
+                        for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=bean,
