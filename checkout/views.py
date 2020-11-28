@@ -1,13 +1,10 @@
-from django.shortcuts import (
-    render, redirect, reverse, get_object_or_404, HttpResponse
-)
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-
 
 from products.models import Bean
 from profiles.models import UserProfile
@@ -17,16 +14,9 @@ from shopping_bag.contexts import shopping_bag_contents
 import stripe
 import json
 
-"""
-Code adapted from from CI's Boutique Ado project, Checkout section
-"""
-
 
 @require_POST
 def cache_checkout_data(request):
-    """
-    A view to allow checkout data to be stored.
-    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -43,9 +33,6 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
-    """
-    A view for the checkout form to submit and interact with Stripe.
-    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -65,35 +52,52 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_shopping_bag = json.dumps(shopping_bag)
+            order.save()
             for item_id, item_data in shopping_bag.items():
                 try:
                     bean = Bean.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
                             order=order,
                             bean=bean,
                             quantity=item_data,
                         )
-                    order_line_item.save()
+                        order_line_item.save()
+                    else:
+                        for size, quantity in item_data['items_by_size'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                bean=bean,
+                                quantity=quantity,
+                                product_size=size,
+                            )
+                            order_line_item.save()
                 except Bean.DoesNotExist:
+                    messages.error(request, (
+                        "One of the products in your shopping_bag wasn't found in our database. "
+                        "Please call us for assistance!")
+                    )
                     order.delete()
                     return redirect(reverse('view_shopping_bag'))
 
+            # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success',
-                            args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         shopping_bag = request.session.get('shopping_bag', {})
         if not shopping_bag:
-            messages.error(request,
-                           "There's nothing in your bag at the moment")
-            return redirect(reverse('countries'))
+            messages.error(request, "There's nothing in your shopping_bag at the moment")
+            return redirect(reverse('products'))
 
-        current_bag = shopping_bag_contents(request)
-        total = current_bag['grand_total']
+        current_shopping_bag = shopping_bag_contents(request)
+        total = current_shopping_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
@@ -101,7 +105,25 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        order_form = OrderForm()
+        # Attempt to prefill the form with any info the user maintains in their profile
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'county': profile.default_county,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -139,10 +161,15 @@ def checkout_success(request, order_number):
                 'default_town_or_city': order.town_or_city,
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,
+                'default_county': order.county,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
+
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
 
     if 'shopping_bag' in request.session:
         del request.session['shopping_bag']
