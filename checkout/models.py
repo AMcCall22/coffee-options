@@ -1,5 +1,4 @@
 import uuid
-import sys
 
 from django.db import models
 from django.db.models import Sum
@@ -35,7 +34,6 @@ class Order(models.Model):
                                       default=0)
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
-                                      
 
     def _generate_order_number(self):
         """
