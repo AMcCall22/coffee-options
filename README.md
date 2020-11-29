@@ -12,11 +12,6 @@ Deployed site - [Coffee Choices](https://coffee-choices.herokuapp.com/)
 
 
 
-#### Home Scren Image
-Link to [Home Screen](/Readme_files/Home_screen.png)
-
-
-
 #### UX
 
 ##### User Stories
@@ -424,7 +419,7 @@ This could be added to enhance the user's experience of the site to quickly loca
 
 Thanks to my mentor, Brian Macharia for his input and direction.
 
-Thanks to student support at Code Institute.
+Thanks to tutor support at Code Institute.
 
 Thanks to my peers at Code Institute, of whom I have called on for support during this project.
 
