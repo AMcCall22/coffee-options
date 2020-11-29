@@ -17,7 +17,6 @@ Code adapted from from CI's Boutique Ado project, Checkout section
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
-
     def __init__(self, request):
         self.request = request
 
@@ -52,6 +51,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        print("test")
         print("pay intent succeeded")
         sys.stdout.flush()
         intent = event.data.object
