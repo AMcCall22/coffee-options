@@ -55,10 +55,12 @@ class StripeWH_Handler:
         print("pay intent succeeded")
         sys.stdout.flush()
         intent = event.data.object
+        pid = intent.id
         shopping_bag = intent.metadata.shopping_bag
         save_info = intent.metadata.shopping_bag
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -98,6 +100,8 @@ class StripeWH_Handler:
                         postcode__iexact=shipping_details.address.postal_code,
                         country__iexact=shipping_details.address.country,
                         phone_number__iexact=shipping_details.phone,
+                        grand_total=grand_total,
+                        stripe_pid=pid,
                     )
                 except:
                     print(sys.exc_info()[0])
