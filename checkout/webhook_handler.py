@@ -98,13 +98,19 @@ class StripeWH_Handler:
                     country__iexact=shipping_details.address.country,
                     phone_number__iexact=shipping_details.phone,
                 )
+                print("order found")
+                sys.stdout.flush()
                 order_exists = True
+                print("breaking")
+                sys.stdout.flush()
                 break
             except Order.DoesNotExist:
                 print("except")
                 sys.stdout.flush()
                 attempt += 1
                 time.sleep(1)
+            print("broke")
+            sys.stdout.flush()
         if order_exists:
             print("order exists")
             sys.stdout.flush()
@@ -156,6 +162,8 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+        print("sending email")
+        sys.stdout.flush()
         self._send_confirmation_email(order)
         print("return 200")
         sys.stdout.flush() 
