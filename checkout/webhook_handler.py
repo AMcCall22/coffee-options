@@ -88,16 +88,20 @@ class StripeWH_Handler:
             try:
                 print("att", attempt)
                 sys.stdout.flush()
-                order = Order.objects.get(
-                    full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.email,
-                    street_address1__iexact=shipping_details.address.line1,
-                    street_address2__iexact=shipping_details.address.line2,
-                    town_or_city__iexact=shipping_details.address.city,
-                    postcode__iexact=shipping_details.address.postal_code,
-                    country__iexact=shipping_details.address.country,
-                    phone_number__iexact=shipping_details.phone,
-                )
+                try:
+                    order = Order.objects.get(
+                        full_name__iexact=shipping_details.name,
+                        email__iexact=billing_details.email,
+                        street_address1__iexact=shipping_details.address.line1,
+                        street_address2__iexact=shipping_details.address.line2,
+                        town_or_city__iexact=shipping_details.address.city,
+                        postcode__iexact=shipping_details.address.postal_code,
+                        country__iexact=shipping_details.address.country,
+                        phone_number__iexact=shipping_details.phone,
+                    )
+                except:
+                    print(sys.exc_info()[0])
+                    sys.stdout.flush()
                 print("order found")
                 sys.stdout.flush()
                 order_exists = True
