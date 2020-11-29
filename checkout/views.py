@@ -13,7 +13,7 @@ from products.models import Bean
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from shopping_bag.contexts import shopping_bag_contents
-
+import sys
 import stripe
 import json
 
