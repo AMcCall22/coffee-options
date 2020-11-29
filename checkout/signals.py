@@ -3,6 +3,8 @@ from django.dispatch import receiver
 
 from .models import OrderLineItem
 
+import sys
+
 """
 Code adapted from from CI's Boutique Ado project, Checkout section
 """
@@ -13,6 +15,8 @@ def update_on_save(sender, instance, created, **kwargs):
     """
     Update order total on lineitem update/create
     """
+    print("update on save")
+    sys.stdout.flush() 
     instance.order.update_total()
 
 
