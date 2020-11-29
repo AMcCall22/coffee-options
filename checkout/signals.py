@@ -15,8 +15,6 @@ def update_on_save(sender, instance, created, **kwargs):
     """
     Update order total on lineitem update/create
     """
-    print("update on save")
-    sys.stdout.flush() 
     instance.order.update_total()
 
 

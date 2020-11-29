@@ -64,8 +64,6 @@ def checkout(request):
                 try:
                     bean = Bean.objects.get(id=item_id)
                     if isinstance(item_data, int):
-                        print("creating OLI 1")
-                        sys.stdout.flush()
                         order_line_item = OrderLineItem(
                             order=order,
                             bean=bean,
@@ -73,8 +71,6 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        print("creating OLI 2")
-                        sys.stdout.flush()
                         for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,

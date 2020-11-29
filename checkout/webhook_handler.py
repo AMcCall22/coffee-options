@@ -22,8 +22,6 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        print("send email")
-        sys.stdout.flush() 
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -51,8 +49,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print("pay intent succeeded")
-        sys.stdout.flush()
         intent = event.data.object
         pid = intent.id
         shopping_bag = intent.metadata.shopping_bag
@@ -67,8 +63,6 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         # Update profile information if save_info was checked
-        print("updating profile")
-        sys.stdout.flush() 
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
@@ -81,58 +75,35 @@ class StripeWH_Handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_phone_number = shipping_details.phone
                 profile.save()
-        print("running attempts")
-        sys.stdout.flush() 
         order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
-                print("att", attempt)
-                sys.stdout.flush()
-                try:
-                    order = Order.objects.get(
-                        full_name__iexact=shipping_details.name,
-                        email__iexact=billing_details.email,
-                        street_address1__iexact=shipping_details.address.line1,
-                        street_address2__iexact=shipping_details.address.line2,
-                        town_or_city__iexact=shipping_details.address.city,
-                        postcode__iexact=shipping_details.address.postal_code,
-                        country__iexact=shipping_details.address.country,
-                        phone_number__iexact=shipping_details.phone,
-                        order_total=order_total,
-                        stripe_pid=pid,
-                    )
-
-                except:
-                    print(sys.exc_info()[0])
-                    sys.stdout.flush()
-                print("order found")
-                sys.stdout.flush()
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    town_or_city__iexact=shipping_details.address.city,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    country__iexact=shipping_details.address.country,
+                    phone_number__iexact=shipping_details.phone,
+                    order_total=order_total,
+                    stripe_pid=pid,
+                )
                 order_exists = True
-                print("breaking")
-                sys.stdout.flush()
                 break
             except Order.DoesNotExist:
-                print("except")
-                sys.stdout.flush()
                 attempt += 1
                 time.sleep(1)
-            print("broke")
-            sys.stdout.flush()
         if order_exists:
-            print("order exists")
-            sys.stdout.flush()
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
-            print("else order not exist")
-            sys.stdout.flush() 
             order = None
             try:
-                print("trying")
-                sys.stdout.flush() 
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
@@ -164,8 +135,6 @@ class StripeWH_Handler:
                             )
                             order_line_item.save()
             except Exception as e:
-                print("error", e)
-                sys.stdout.flush() 
                 if order:
                     order.delete()
                 return HttpResponse(
@@ -181,8 +150,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
-        print("intent failed")
-        sys.stdout.flush()
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)

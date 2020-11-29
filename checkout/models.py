@@ -48,8 +48,6 @@ class Order(models.Model):
         Update grand total each time a line item is added
 
         """
-        print("updating total")
-        sys.stdout.flush() 
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.save()
@@ -81,8 +79,6 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        print("OLI save")
-        sys.stdout.flush()
         self.lineitem_total = self.bean.price * self.quantity
         super().save(*args, **kwargs)
 
