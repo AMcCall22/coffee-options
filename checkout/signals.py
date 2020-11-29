@@ -3,8 +3,6 @@ from django.dispatch import receiver
 
 from .models import OrderLineItem
 
-import sys
-
 """
 Code adapted from from CI's Boutique Ado project, Checkout section
 """
