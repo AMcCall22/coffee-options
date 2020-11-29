@@ -80,6 +80,8 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
+        print("OLI save")
+        sys.stdout.flush()
         self.lineitem_total = self.bean.price * self.quantity
         super().save(*args, **kwargs)
 

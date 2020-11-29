@@ -51,7 +51,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print("test")
         print("pay intent succeeded")
         sys.stdout.flush()
         intent = event.data.object
