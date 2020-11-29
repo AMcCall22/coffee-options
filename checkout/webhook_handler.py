@@ -102,7 +102,7 @@ class StripeWH_Handler:
                         phone_number__iexact=shipping_details.phone,
                         order_total=order_total,
                         stripe_pid=pid,
-                        original_bag=shopping_bag)
+                    )
 
                 except:
                     print(sys.exc_info()[0])
@@ -145,7 +145,6 @@ class StripeWH_Handler:
                     country=shipping_details.address.country,
                     phone_number=shipping_details.phone,
                     stripe_pid=pid,
-                    original_bag=shopping_bag
                 )
                 for item_id, item_data in json.loads(shopping_bag).items():
                     bean = Bean.objects.get(id=item_id)
